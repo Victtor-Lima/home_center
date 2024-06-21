@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import CardList from "./Components/CardList";
+import "./Style/App.css";
 
 export type Product = {
   id: string;
