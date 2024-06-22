@@ -1,7 +1,12 @@
 import React from "react";
+import NavCategs from "./NavCategs";
 
 const Header = () => {
-  return <div>Header</div>;
+  return (
+    <div>
+      <NavCategs />
+    </div>
+  );
 };
 
 export default Header;
