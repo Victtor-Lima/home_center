@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import CardList from "./Components/CardList";
+import Header from "./Components/Header";
 import "./Style/App.css";
 
 export type Product = {
@@ -41,6 +42,7 @@ function App() {
   if (data === null) return;
   return (
     <>
+      <Header />
       <CardList data={data} />
     </>
   );
