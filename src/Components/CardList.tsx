@@ -4,8 +4,6 @@ import { SearchByCategory } from "../App";
 import styles from "../Style/CardList.module.css";
 
 const CardList = ({ data }: { data: SearchByCategory }) => {
-  console.log(data);
-
   return (
     <section className={styles.wrapper_card}>
       <ul className={styles.wrapper_container_card_product}>

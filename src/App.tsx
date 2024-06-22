@@ -1,7 +1,7 @@
-import React from "react";
-import { useEffect } from "react";
-import CardList from "./Components/CardList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
+import Home from "./Pages/Home";
+import CategoryProducts from "./Pages/CategoryProducts";
 import "./Style/App.css";
 
 export type Product = {
@@ -26,24 +26,17 @@ export type SearchByCategory = {
 };
 
 function App() {
-  const [data, setData] = React.useState<SearchByCategory | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://api.mercadolibre.com/sites/MLB/search?category=MLB1055"
-      );
-      const json = await response.json();
-      setData(json);
-    };
-    fetchData();
-  }, []);
-
-  if (data === null) return;
   return (
     <>
-      <Header />
-      <CardList data={data} />
+      <BrowserRouter>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/c/:id" element={<CategoryProducts />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
     </>
   );
 }
