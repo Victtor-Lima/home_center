@@ -4,6 +4,7 @@ import {
   SearchByCategory,
 } from "../Utility_functions/types_project/types";
 import { fetchData } from "../Hooks/fetchData";
+import { getLocal } from "../Utility_functions/localstorage_funcs";
 
 export const DataContext = React.createContext<IDataContext | null>(null);
 
@@ -26,6 +27,11 @@ export const DataContextProvider = ({ children }: React.PropsWithChildren) => {
 
     if (urlProducts) {
       requestProducts();
+    }
+
+    const URL: string | null = getLocal("currentPage");
+    if (typeof URL === "string") {
+      seturlProducts(`https://api.mercadolibre.com/sites/MLB/search?${URL}`);
     }
   }, [urlProducts]);
 
