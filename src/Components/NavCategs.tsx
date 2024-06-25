@@ -4,14 +4,13 @@ import { useData } from "../Context/DataContext";
 import { setLocal } from "../Utility_functions/localstorage_funcs";
 
 const NavCategs = () => {
-  const { data, seturlProducts } = useData();
+  const { seturlProducts } = useData();
 
   function setUrl(idUrl: string) {
     seturlProducts(`https://api.mercadolibre.com/sites/MLB/search?${idUrl}`);
     setLocal("currentPage", idUrl);
   }
 
-  console.log(data);
   return (
     <div>
       <Link

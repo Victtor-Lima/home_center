@@ -15,8 +15,8 @@ export type SearchByCategory = {
   results: Array<Product>;
   sort: object;
   available_sorts: Array<Obj>;
-  filters: Array<filters_values>;
-  available_filters: Array<object>;
+  filters: Array<Filters_propriedades>;
+  available_filters: Array<AvailableFilters_propriedades>;
   pdp_tracking: object;
   user_context: null;
 };
@@ -26,14 +26,27 @@ type Obj = {
   name: string;
 };
 
-type filters_values = {
-  values: Array<filters_values_object>;
+type Filters_propriedades = {
+  values: Array<Filters_propriedades_values_object>;
 };
 
-type filters_values_object = {
+type Filters_propriedades_values_object = {
   id: string;
   name: string;
   path_from_root: Array<{ id: string; name: string }>;
+};
+
+type AvailableFilters_propriedades = {
+  id: string;
+  name: string;
+  type: string;
+  values: Array<available_filters_propriedades_values_object>;
+};
+
+type available_filters_propriedades_values_object = {
+  id: string;
+  name: string;
+  results: number;
 };
 
 // Types Context

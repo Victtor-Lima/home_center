@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import CategoryProducts from "./Pages/CategoryProducts";
 import "./Style/App.css";
 import { DataContextProvider } from "./Context/DataContext";
+import Subcategories from "./Pages/Subcategories";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/c/:id" element={<CategoryProducts />} />
+              <Route path="/c/:id/subcategory" element={<Subcategories />} />
             </Routes>
           </main>
         </BrowserRouter>
