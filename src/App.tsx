@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Home from "./Pages/Home";
-import CategoryProducts from "./Pages/CategoryProducts";
+import GeneralProducts from "./Pages/GeneralProducts";
 import "./Style/App.css";
 import { DataContextProvider } from "./Context/DataContext";
-import Subcategories from "./Pages/Subcategories";
+import SpecificProducts from "./Pages/SpecificProducts";
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/c/:id" element={<CategoryProducts />} />
-              <Route path="/c/:id/subcategory" element={<Subcategories />} />
+              <Route path="/c/:id" element={<GeneralProducts />} />
+              <Route path="/c/:id/*" element={<SpecificProducts />} />
             </Routes>
           </main>
         </BrowserRouter>

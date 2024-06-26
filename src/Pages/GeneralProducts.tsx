@@ -1,21 +1,15 @@
 import React from "react";
 import CardList from "../Components/CardList";
 import { useData } from "../Context/DataContext";
-import { useParams } from "react-router-dom";
 import NavSidebar from "../Components/NavSidebar";
 
-const StyleCategoryProducts: React.CSSProperties = {
+export const StyleCategoryProducts: React.CSSProperties = {
   display: "grid",
   gridTemplateColumns: "300px auto",
 };
 
-const CategoryProducts = () => {
-  const { data, seturlProducts } = useData();
-  const { id } = useParams();
-
-  React.useEffect(() => {
-    seturlProducts(`https://api.mercadolibre.com/sites/MLB/search?${id}`);
-  }, [id, seturlProducts]);
+const GeneralProducts = () => {
+  const { data } = useData();
 
   if (data === null) return "Carregando...";
   return (
@@ -26,4 +20,4 @@ const CategoryProducts = () => {
   );
 };
 
-export default CategoryProducts;
+export default GeneralProducts;
