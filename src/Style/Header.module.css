@@ -1,0 +1,25 @@
+.header {
+  display: grid;
+  grid-template-columns: auto 3fr auto auto;
+  gap: 20px;
+  align-items: center;
+  max-width: 1200px;
+  height: 65px;
+  background: #ff7a44;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.header::before {
+  content: "";
+  width: 100vw;
+  height: 65px;
+  left: 0px;
+  background: #ff7a44;
+  position: fixed;
+  z-index: -1;
+}
+
+.logo {
+  width: 120px;
+}
