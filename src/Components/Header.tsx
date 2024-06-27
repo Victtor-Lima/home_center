@@ -9,24 +9,26 @@ import iccart from "../../public/icon_cart.svg";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Link to="/" className={styles.link_tohome}>
-        <img className={styles.logo} src={logo} alt="Logo da Home Center" />
-      </Link>
-      <InputSearch />
-      <Link to="/favorite" className={styles.link_tohome}>
-        <img
-          className="centralizado"
-          src={icfavorite}
-          alt="link para favoritados"
-        />
-      </Link>
-      <Link to="/cart" className={styles.link_tohome}>
-        <img
-          className="centralizado"
-          src={iccart}
-          alt="link para carrinho de produtos"
-        />
-      </Link>
+      <div>
+        <Link to="/" className={styles.link_tohome}>
+          <img className={styles.logo} src={logo} alt="Logo da Home Center" />
+        </Link>
+        <InputSearch />
+        <Link to="/favorite" className={styles.link_tohome}>
+          <img
+            className="centralizado"
+            src={icfavorite}
+            alt="link para favoritados"
+          />
+        </Link>
+        <Link to="/cart" className={styles.link_tohome}>
+          <img
+            className="centralizado"
+            src={iccart}
+            alt="link para carrinho de produtos"
+          />
+        </Link>
+      </div>
     </header>
   );
 };

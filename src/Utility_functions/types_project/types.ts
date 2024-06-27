@@ -21,7 +21,7 @@ export type SearchByCategory = {
   user_context: null;
 };
 
-type Obj = {
+export type Obj = {
   id: string;
   name: string;
 };
@@ -54,5 +54,5 @@ type available_filters_propriedades_values_object = {
 export type IDataContext = {
   urlProducts: string | null;
   seturlProducts: React.Dispatch<React.SetStateAction<string | null>>;
-  data: SearchByCategory | null;
+  data: SearchByCategory | Array<Obj> | null;
 };
