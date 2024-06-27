@@ -1,21 +1,21 @@
 import React from "react";
-import { SearchByCategory } from "../Utility_functions/types_project/types";
 import { Link, useParams } from "react-router-dom";
 import { useData } from "../Context/DataContext";
-import { setLocal } from "../Utility_functions/localstorage_funcs";
 
 const optionsFilters = ["category", "state", "discount", "price"];
 
-const NavSidebar = ({ data }: { data: SearchByCategory }) => {
-  const { seturlProducts } = useData();
+const NavSidebar = () => {
+  const { data, seturlProducts } = useData();
   const { id } = useParams();
 
   function setUrl(idUrl: string) {
     seturlProducts(`https://api.mercadolibre.com/sites/MLB/search?${idUrl}`);
-    setLocal("currentPage", idUrl);
   }
+  React.useEffect(() => {
+    seturlProducts(`https://api.mercadolibre.com/sites/MLB/search?${id}`);
+  }, [id, seturlProducts]);
 
-  console.log(data);
+  if (data === null) return;
   return (
     <section>
       {data.available_filters
@@ -26,7 +26,10 @@ const NavSidebar = ({ data }: { data: SearchByCategory }) => {
             <ul>
               {filter.values.map((value) => (
                 <li>
-                  <Link to={`/c/${id}/subcategory`}>
+                  <Link
+                    to={`/category=${value.id}`}
+                    onClick={() => setUrl(`category=${value.id}`)}
+                  >
                     <span>{value.name}</span>
                   </Link>
                 </li>

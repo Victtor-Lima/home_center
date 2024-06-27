@@ -1,5 +1,5 @@
 import React from "react";
-import { Product } from "../App";
+import { Product } from "../Utility_functions/types_project/types";
 import { price_discounts } from "../Utility_functions/price_discount";
 import styles from "../Style/Card.module.css";
 
