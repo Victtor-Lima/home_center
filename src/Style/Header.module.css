@@ -1,4 +1,4 @@
-.header {
+.header > div {
   display: grid;
   grid-template-columns: auto 3fr auto auto;
   gap: 20px;
@@ -10,14 +10,11 @@
   margin: 0 auto;
 }
 
-.header::before {
+.header {
   content: "";
-  width: 100vw;
-  height: 65px;
+  width: 100%;
   left: 0px;
   background: #ff7a44;
-  position: fixed;
-  z-index: -1;
 }
 
 .logo {
