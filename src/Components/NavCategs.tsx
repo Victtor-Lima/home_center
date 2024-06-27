@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useData } from "../Context/DataContext";
-import { setLocal } from "../Utility_functions/localstorage_funcs";
 
 const NavCategs = () => {
   const { seturlProducts } = useData();

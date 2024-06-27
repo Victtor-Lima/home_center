@@ -14,7 +14,7 @@ const GeneralProducts = () => {
   if (data === null) return "Carregando...";
   return (
     <section style={StyleCategoryProducts}>
-      <NavSidebar data={data} />
+      <NavSidebar />
       <CardList data={data} />
     </section>
   );
