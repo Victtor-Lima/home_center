@@ -1,7 +1,7 @@
 import React from "react";
-import { Product } from "../App";
 import styles from "../Style/Card.module.css";
 import PriceDiscounts from "./PriceDiscounts";
+import { Product } from "../Utility_functions/types_project/types";
 
 const Card = ({ product }: { product: Product }) => {
   return (

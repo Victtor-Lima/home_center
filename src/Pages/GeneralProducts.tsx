@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import CardList from "../Components/CardList";
-import { useData } from "../Context/DataContext";
+import DataContext from "../Context/DataContext";
+import { useLocation } from "react-router-dom";
 import NavSidebar from "../Components/NavSidebar";
 
 export const StyleCategoryProducts: React.CSSProperties = {
@@ -9,13 +10,14 @@ export const StyleCategoryProducts: React.CSSProperties = {
 };
 
 const GeneralProducts = () => {
-  const { data } = useData();
+  const context = useContext(DataContext);
 
-  if (data === null) return "Carregando...";
+  if (context === null) return;
+  if (context.data === null) return "Carregando...";
   return (
     <section style={StyleCategoryProducts}>
       <NavSidebar />
-      <CardList data={data} />
+      <CardList data={context.data} />
     </section>
   );
 };

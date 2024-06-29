@@ -1,16 +1,18 @@
-import { useData } from "../Context/DataContext";
 import NavSidebar from "../Components/NavSidebar";
 import CardList from "../Components/CardList";
 import { StyleCategoryProducts } from "./GeneralProducts";
+import { useContext } from "react";
+import DataContext from "../Context/DataContext";
 
 const SpecificProducts = () => {
-  const { data } = useData();
+  const context = useContext(DataContext);
 
-  if (data === null) return "Carregando...";
+  if (context === null) return;
+  if (context.data === null) return "Carregando...";
   return (
     <section style={StyleCategoryProducts}>
       <NavSidebar />
-      <CardList data={data} />
+      <CardList data={context.data} />
     </section>
   );
 };
