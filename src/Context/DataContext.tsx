@@ -1,20 +1,16 @@
 import React from "react";
 import {
   IDataContext,
+  Obj,
   SearchByCategory,
 } from "../Utility_functions/types_project/types";
 import { fetchData } from "../Hooks/fetchData";
 
 export const DataContext = React.createContext<IDataContext | null>(null);
 
-export const useData = () => {
-  const context = React.useContext(DataContext);
-  if (!context) throw new Error("useData precisa estar em DataContextProvider");
-  return context;
-};
-
 export const DataContextProvider = ({ children }: React.PropsWithChildren) => {
   const [urlProducts, seturlProducts] = React.useState<string | null>(null);
+  const [categories, setCategories] = React.useState<Array<Obj> | null>(null);
   const [data, setData] = React.useState<SearchByCategory | null>(null);
 
   React.useEffect(() => {
@@ -29,8 +25,27 @@ export const DataContextProvider = ({ children }: React.PropsWithChildren) => {
     }
   }, [urlProducts]);
 
+  React.useEffect(() => {
+    async function fetchCatecories() {
+      const categoriesResult = await fetchData<Array<Obj>>(
+        `https://api.mercadolibre.com/sites/MLB/categories`
+      );
+      setCategories(categoriesResult);
+    }
+    fetchCatecories();
+  }, []);
+
   return (
-    <DataContext.Provider value={{ data, urlProducts, seturlProducts }}>
+    <DataContext.Provider
+      value={{
+        data,
+        setData,
+        urlProducts,
+        seturlProducts,
+        categories,
+        setCategories,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );

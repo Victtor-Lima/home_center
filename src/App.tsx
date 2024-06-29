@@ -17,10 +17,15 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route
+                path="/c/casa-moveis-decoracao"
+                element={<GeneralProducts />}
+              />
+              <Route path="/c/construcao" element={<GeneralProducts />} />
+              <Route path="/c/eletrodomesticos" element={<GeneralProducts />} />
+              <Route path={`/:id/page?`} element={<SpecificProducts />} />
               <Route path={`/favorite`} element={<Favorite />} />
               <Route path={`/cart`} element={<CartProducts />} />
-              <Route path="/c/:id" element={<GeneralProducts />} />
-              <Route path={`/:id`} element={<SpecificProducts />} />
             </Routes>
           </main>
         </BrowserRouter>

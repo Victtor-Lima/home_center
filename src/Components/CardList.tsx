@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
-import { SearchByCategory } from "../App";
 import styles from "../Style/CardList.module.css";
+import { SearchByCategory } from "../Utility_functions/types_project/types";
 
 const CardList = ({ data }: { data: SearchByCategory }) => {
   return (

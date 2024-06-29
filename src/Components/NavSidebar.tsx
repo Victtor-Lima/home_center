@@ -1,25 +1,23 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { useData } from "../Context/DataContext";
-
-const optionsFilters = ["category", "state", "discount", "price"];
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import DataContext from "../Context/DataContext";
 
 const NavSidebar = () => {
-  const { data, seturlProducts } = useData();
-  const { id } = useParams();
+  const context = useContext(DataContext);
 
+  const location = useLocation();
   function setUrl(idUrl: string) {
-    seturlProducts(`https://api.mercadolibre.com/sites/MLB/search?${idUrl}`);
+    context?.seturlProducts(
+      `https://api.mercadolibre.com/sites/MLB/search?${idUrl}`
+    );
   }
-  React.useEffect(() => {
-    seturlProducts(`https://api.mercadolibre.com/sites/MLB/search?${id}`);
-  }, [id, seturlProducts]);
 
-  if (data === null) return;
+  if (context === null) return;
+  if (context.data === null) return;
   return (
     <section>
-      {data.available_filters
-        .filter((filter) => optionsFilters.includes(filter.id))
+      {context.data.available_filters
+        .filter((filter) => filter.id === "category")
         .map((filter) => (
           <div>
             <h3>{filter.name}</h3>
@@ -27,7 +25,7 @@ const NavSidebar = () => {
               {filter.values.map((value) => (
                 <li>
                   <Link
-                    to={`/category=${value.id}`}
+                    to={`/${value.id}`}
                     onClick={() => setUrl(`category=${value.id}`)}
                   >
                     <span>{value.name}</span>

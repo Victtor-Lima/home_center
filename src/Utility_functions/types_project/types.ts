@@ -52,7 +52,10 @@ type available_filters_propriedades_values_object = {
 // Types Context
 
 export type IDataContext = {
+  categories: Obj[] | null;
+  setCategories: React.Dispatch<React.SetStateAction<Obj[] | null>>;
   urlProducts: string | null;
   seturlProducts: React.Dispatch<React.SetStateAction<string | null>>;
-  data: SearchByCategory | Array<Obj> | null;
+  data: SearchByCategory | null;
+  setData: React.Dispatch<React.SetStateAction<SearchByCategory | null>>;
 };
