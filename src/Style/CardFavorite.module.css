@@ -11,6 +11,11 @@
   width: 160px;
 }
 
+.container_cardfavorite_content {
+  display: grid;
+  grid-template-rows: max-content 1fr auto;
+}
+
 .cardfavorite_title {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
@@ -38,4 +43,12 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: #2e2e2e;
+}
+
+.button_delete {
+  justify-self: left;
+  color: #ff7a44;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 8px;
 }

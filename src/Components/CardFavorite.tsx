@@ -1,9 +1,10 @@
 import React from "react";
-import { Product } from "../Utility_functions/types_project/types";
+import { ICard } from "../Utility_functions/types_project/types";
 import styles from "../Style/CardFavorite.module.css";
 import PriceDiscounts from "./PriceDiscounts";
+import ButtonDelete from "./ButtonDelete";
 
-const CardFavorite = ({ product }: { product: Product }) => {
+const CardFavorite = ({ product, arrFavorite }: ICard) => {
   return (
     <div key={product.id} className={styles.wrapper_cardfavorite}>
       <img
@@ -11,7 +12,7 @@ const CardFavorite = ({ product }: { product: Product }) => {
         alt={product.title}
         className={styles.cardfavorite_img}
       />
-      <div>
+      <div className={styles.container_cardfavorite_content}>
         <h1 className={styles.cardfavorite_title}>{product.title}</h1>
         <div>
           {product.original_price &&
@@ -33,6 +34,9 @@ const CardFavorite = ({ product }: { product: Product }) => {
             <PriceDiscounts product={product} />
           </div>
         </div>
+        <ButtonDelete
+          deleteFromFavorites={[product, arrFavorite, "favorites"]}
+        />
       </div>
     </div>
   );

@@ -25,6 +25,7 @@ const NavSidebar = () => {
               {filter.values.map((value) => (
                 <li className={styles.navsidebar_categorie_option}>
                   <Link
+                    key={value.id}
                     to={`/${value.id}`}
                     onClick={() => setUrl(`category=${value.id}`)}
                   >
