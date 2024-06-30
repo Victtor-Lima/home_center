@@ -11,7 +11,6 @@ export function handleFavoriteAction(
   const [product, arrFavorite, nameLocal] = arrParam;
   const [favorite, setFavorite] = arrFavorite;
   const item = favorite.find((item) => item.id === product.id);
-  console.log(item);
 
   if (item) {
     const newArray = [...favorite];

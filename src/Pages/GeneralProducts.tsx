@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import CardList from "../Components/CardList";
 import DataContext from "../Context/DataContext";
-import { useLocation } from "react-router-dom";
 import NavSidebar from "../Components/NavSidebar";
+import styles from "../Style/CategoryProducts.module.css";
 
 export const StyleCategoryProducts: React.CSSProperties = {
   display: "grid",
@@ -15,7 +15,7 @@ const GeneralProducts = () => {
   if (context === null) return;
   if (context.data === null) return "Carregando...";
   return (
-    <section style={StyleCategoryProducts}>
+    <section className={styles.wrapper_category_products}>
       <NavSidebar />
       <CardList data={context.data} />
     </section>
