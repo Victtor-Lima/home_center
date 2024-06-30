@@ -13,6 +13,14 @@ export type IButtonFavorite = {
   ];
 };
 
+export type IButtonDelete = {
+  deleteFromFavorites: [
+    Product,
+    [Product[], React.Dispatch<React.SetStateAction<Product[]>>],
+    string
+  ];
+};
+
 // Types data
 
 export type Product = {

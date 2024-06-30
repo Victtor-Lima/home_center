@@ -5,21 +5,25 @@ import { getLocal } from "../Utility_functions/localstorage_funcs";
 import styles from "../Style/Favorite.module.css";
 
 const Favorite = () => {
-  const [favorites, setFavorites] = React.useState<Array<Product>>([]);
+  const [favorite, setFavorite] = React.useState<Array<Product>>([]);
 
   React.useEffect(() => {
     const favoritesLocal = getLocal("favorites");
 
     if (favoritesLocal) {
-      setFavorites(favoritesLocal);
+      setFavorite(favoritesLocal);
     }
   }, []);
 
   return (
     <section className={styles.wrapper_favorite}>
       <h1 className={styles.favorite_title}>Favoritos</h1>
-      {favorites.map((product) => (
-        <CardFavorite product={product} />
+      {favorite.map((product) => (
+        <CardFavorite
+          key={product.id}
+          product={product}
+          arrFavorite={[favorite, setFavorite]}
+        />
       ))}
     </section>
   );
