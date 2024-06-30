@@ -1,3 +1,18 @@
+// TYPES CARD
+
+export type ICard = {
+  product: Product;
+  arrFavorite: [Product[], React.Dispatch<React.SetStateAction<Product[]>>];
+};
+
+export type IButtonFavorite = {
+  addToFavorites: [
+    Product,
+    [Product[], React.Dispatch<React.SetStateAction<Product[]>>],
+    string
+  ];
+};
+
 // Types data
 
 export type Product = {
