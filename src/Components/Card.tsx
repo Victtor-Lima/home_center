@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "../Style/Card.module.css";
 import PriceDiscounts from "./PriceDiscounts";
-import { Product } from "../Utility_functions/types_project/types";
+import { ICard } from "../Utility_functions/types_project/types";
+import ButtonFavorite from "./ButtonFavorite";
 
-const Card = ({ product }: { product: Product }) => {
+const Card = ({ product, arrFavorite }: ICard) => {
   return (
     <div key={product.id} className={styles.container_card_product}>
       <img
@@ -29,6 +30,7 @@ const Card = ({ product }: { product: Product }) => {
         </span>
         <PriceDiscounts product={product} />
       </div>
+      <ButtonFavorite addToFavorites={[product, arrFavorite, "favorites"]} />
     </div>
   );
 };

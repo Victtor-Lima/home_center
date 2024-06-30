@@ -1,4 +1,4 @@
-export function setLocal(name: string, data: string) {
+export function setLocal(name: string, data: Array<object>) {
   localStorage.setItem(name, JSON.stringify(data));
 }
 
