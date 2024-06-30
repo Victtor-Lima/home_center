@@ -1,0 +1,41 @@
+.wrapper_cardfavorite {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 20px;
+  background: #fff;
+  padding: 30px 20px;
+  border-bottom: 1px solid #bebebe85;
+}
+
+.cardfavorite_img {
+  width: 160px;
+}
+
+.cardfavorite_title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.cardfavorite_original_price {
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: line-through;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.wrapper_cardfavorite_final_price {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.cardfavorite_price {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2e2e2e;
+}
