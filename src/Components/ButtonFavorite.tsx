@@ -11,9 +11,9 @@ const ButtonFavorite = ({ addToFavorites }: IButtonFavorite) => {
       onClick={() => handleFavoriteAction(addToFavorites)}
     >
       {addToFavorites[1][0].find((item) => item.id === addToFavorites[0].id) ? (
-        <MdOutlineFavorite color="red" size="1.9em" />
+        <MdOutlineFavorite color="#ff7a44" size="1.9em" />
       ) : (
-        <MdFavoriteBorder size="1.9em" />
+        <MdFavoriteBorder color="#fd9d77" size="1.9em" />
       )}
     </button>
   );

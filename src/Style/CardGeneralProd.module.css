@@ -6,6 +6,11 @@
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
+.link_cardgeneralprod:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s;
+}
+
 .link_cardgeneralprod:first-of-type,
 .link_cardgeneralprod:nth-of-type(2),
 .link_cardgeneralprod:last-of-type {
