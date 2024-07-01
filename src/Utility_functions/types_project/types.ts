@@ -1,29 +1,29 @@
 // TYPES CARD
 
 export type ICard = {
-  product: Product;
-  arrFavorite: [Product[], React.Dispatch<React.SetStateAction<Product[]>>];
+  product: IProduct;
+  arrFavorite: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
 };
 
 export type IButtonFavorite = {
   addToFavorites: [
-    Product,
-    [Product[], React.Dispatch<React.SetStateAction<Product[]>>],
+    IProduct,
+    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
     string
   ];
 };
 
 export type IButtonDelete = {
   deleteFromFavorites: [
-    Product,
-    [Product[], React.Dispatch<React.SetStateAction<Product[]>>],
+    IProduct,
+    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
     string
   ];
 };
 
 // Types data
 
-export type Product = {
+export type IProduct = {
   id: string;
   title: string;
   thumbnail: string;
@@ -35,7 +35,7 @@ export type SearchByCategory = {
   site_id: string;
   country_default_time_zone: string;
   paging: object;
-  results: Array<Product>;
+  results: Array<IProduct>;
   sort: object;
   available_sorts: Array<Obj>;
   filters: Array<Filters_propriedades>;

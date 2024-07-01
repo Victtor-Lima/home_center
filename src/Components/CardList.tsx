@@ -2,16 +2,16 @@ import React from "react";
 import Card from "./Card";
 import styles from "../Style/CardList.module.css";
 import {
-  Product,
+  IProduct,
   SearchByCategory,
 } from "../Utility_functions/types_project/types";
 import { getLocal } from "../Utility_functions/localstorage_funcs";
 
 const CardList = ({ data }: { data: SearchByCategory }) => {
-  const [favorite, setFavorite] = React.useState<Product[]>([]);
+  const [favorite, setFavorite] = React.useState<IProduct[]>([]);
 
   React.useEffect(() => {
-    const favoriteLocal: Product[] = getLocal("favorites");
+    const favoriteLocal: IProduct[] = getLocal("favorites");
     if (favoriteLocal) {
       setFavorite(favoriteLocal);
     }

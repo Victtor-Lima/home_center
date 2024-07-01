@@ -19,13 +19,15 @@ const NavSidebar = () => {
       {context.data.available_filters
         .filter((filter) => filter.id === "category")
         .map((filter) => (
-          <div>
+          <div key={filter.id}>
             <h3 className={styles.navsidebar_categorie_title}>{filter.name}</h3>
             <ul>
               {filter.values.map((value) => (
-                <li className={styles.navsidebar_categorie_option}>
+                <li
+                  key={value.id}
+                  className={styles.navsidebar_categorie_option}
+                >
                   <Link
-                    key={value.id}
                     to={`/${value.id}`}
                     onClick={() => setUrl(`category=${value.id}`)}
                   >
