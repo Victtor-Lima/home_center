@@ -6,7 +6,7 @@ import "./Style/App.css";
 import { DataContextProvider } from "./Context/DataContext";
 import SpecificProducts from "./Pages/SpecificProducts";
 import Favorite from "./Pages/Favorite";
-import CartProducts from "./Pages/CartProducts";
+import Cart from "./Pages/Cart";
 import Product from "./Pages/Product";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
               <Route path="/c/:id/:id" element={<GeneralProducts />} />
               <Route path={`/:id`} element={<SpecificProducts />} />
               <Route path={`/favorite`} element={<Favorite />} />
-              <Route path={`/cart`} element={<CartProducts />} />
+              <Route path={`/cart`} element={<Cart />} />
               <Route path={`/produto/:id`} element={<Product />} />
             </Routes>
           </main>

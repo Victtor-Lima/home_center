@@ -1,11 +1,11 @@
 import React from "react";
-import { Product } from "../Utility_functions/types_project/types";
 import CardFavorite from "../Components/CardFavorite";
 import { getLocal } from "../Utility_functions/localstorage_funcs";
 import styles from "../Style/Favorite.module.css";
+import { IProduct } from "../Utility_functions/types_project/types";
 
 const Favorite = () => {
-  const [favorite, setFavorite] = React.useState<Array<Product>>([]);
+  const [favorite, setFavorite] = React.useState<Array<IProduct>>([]);
 
   React.useEffect(() => {
     const favoritesLocal = getLocal("favorites");
