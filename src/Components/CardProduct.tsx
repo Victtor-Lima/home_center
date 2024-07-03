@@ -3,10 +3,9 @@ import { ICard } from "../Utility_functions/types_project/types";
 import PriceDiscounts from "./PriceDiscounts";
 import ButtonFavorite from "./ButtonFavorite";
 import styles from "../Style/CardProduct.module.css";
+import ButtonCart from "./ButtonCart";
 
-const CardProduct = ({ product, arrFavorite }: ICard) => {
-  console.log(product);
-
+const CardProduct = ({ product, arrFavorite, arrCart }: ICard) => {
   return (
     <section className={styles.container_card_product}>
       <div>
@@ -36,6 +35,7 @@ const CardProduct = ({ product, arrFavorite }: ICard) => {
           <PriceDiscounts product={product} />
         </div>
         <ButtonFavorite addToFavorites={[product, arrFavorite, "favorites"]} />
+        <ButtonCart arrCart={[product, arrCart, "cart"]} />
       </div>
     </section>
   );

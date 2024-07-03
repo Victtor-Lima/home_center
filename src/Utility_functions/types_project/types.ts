@@ -3,6 +3,7 @@
 export type ICard = {
   product: IProduct;
   arrFavorite: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
+  arrCart: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
 };
 
 export type IButtonFavorite = {
@@ -21,6 +22,14 @@ export type IButtonDelete = {
   ];
 };
 
+export type IButtonCart = {
+  arrCart: [
+    IProduct,
+    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
+    string
+  ];
+};
+
 // Types data
 
 export type IProduct = {
@@ -29,6 +38,7 @@ export type IProduct = {
   thumbnail: string;
   original_price: number | null;
   price: number;
+  amount: number;
 };
 
 export type SearchByCategory = {
