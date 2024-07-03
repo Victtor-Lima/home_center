@@ -1,10 +1,10 @@
 import { setLocal } from "./localstorage_funcs";
-import { Product } from "./types_project/types";
+import { IProduct } from "./types_project/types";
 
 export function handleFavoriteAction(
   arrParam: [
-    Product,
-    [Product[], React.Dispatch<React.SetStateAction<Product[]>>],
+    IProduct,
+    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
     string
   ]
 ) {
@@ -24,6 +24,6 @@ export function handleFavoriteAction(
   }
 }
 
-function alterarArray(array: Product[], obj: Product) {
+function alterarArray(array: IProduct[], obj: IProduct) {
   return array.splice(array.indexOf(obj), 1);
 }

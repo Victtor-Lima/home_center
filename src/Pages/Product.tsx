@@ -11,10 +11,10 @@ import { getLocal } from "../Utility_functions/localstorage_funcs";
 import { fetchData } from "../Hooks/fetchData";
 
 const Product = () => {
-  const [favorite, setFavorite] = React.useState<Array<IProduct>>([]);
-  const { id } = useParams();
-  const context = React.useContext(DataContext);
   const [data, setData] = React.useState<SearchByCategory | null>(null);
+  const [favorite, setFavorite] = React.useState<Array<IProduct>>([]);
+  const [cart, setCart] = React.useState<Array<IProduct>>([]);
+  const { id } = useParams();
 
   React.useEffect(() => {
     async function fetch() {
@@ -31,9 +31,15 @@ const Product = () => {
 
   React.useEffect(() => {
     const favoritesLocal = getLocal("favorites");
-
     if (favoritesLocal) {
       setFavorite(favoritesLocal);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    const cartLocal = getLocal("cart");
+    if (cartLocal) {
+      setCart(cartLocal);
     }
   }, []);
 
@@ -43,6 +49,7 @@ const Product = () => {
       <CardProduct
         product={data.results[0]}
         arrFavorite={[favorite, setFavorite]}
+        arrCart={[cart, setCart]}
       />
     </section>
   );
