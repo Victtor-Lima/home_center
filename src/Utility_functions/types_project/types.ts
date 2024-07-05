@@ -6,6 +6,11 @@ export type ICard = {
   arrCart: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
 };
 
+export type ICardFavorite = {
+  product: IProduct;
+  arrFavorite: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
+};
+
 export type IButtonFavorite = {
   addToFavorites: [
     IProduct,

@@ -1,10 +1,10 @@
 import React from "react";
-import { ICard } from "../Utility_functions/types_project/types";
+import { ICardFavorite } from "../Utility_functions/types_project/types";
 import styles from "../Style/CardFavorite.module.css";
 import PriceDiscounts from "./PriceDiscounts";
 import ButtonDelete from "./ButtonDelete";
 
-const CardFavorite = ({ product, arrFavorite }: ICard) => {
+const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
   return (
     <div key={product.id} className={styles.wrapper_cardfavorite}>
       <img
