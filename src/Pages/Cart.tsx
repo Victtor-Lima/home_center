@@ -6,6 +6,22 @@ import { MdDelete } from "react-icons/md";
 import { getLocal, setLocal } from "../Utility_functions/localstorage_funcs";
 import { IProduct } from "../Utility_functions/types_project/types";
 import styles from "../Style/Cart.module.css";
+import {
+  addUnit,
+  reduceUnit,
+  remove,
+} from "../Utility_functions/quantityManipulation";
+
+function total(cart: IProduct[]) {
+  const priceTotal: string = cart
+    .map((item) => item.price * item.amount)
+    .reduce((acum, value) => acum + value, 0)
+    .toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  return priceTotal;
+}
 
 const Cart = () => {
   const [cart, setCart] = React.useState<Array<IProduct>>([]);
@@ -17,46 +33,6 @@ const Cart = () => {
       setCart(cartLocal);
     }
   }, []);
-
-  function addUnit(
-    product: IProduct,
-    state: IProduct[],
-    setState: React.Dispatch<React.SetStateAction<IProduct[]>>
-  ) {
-    const updateState = state.map((item) => {
-      if (item.id === product.id) {
-        item.amount += 1;
-      }
-      return item;
-    });
-    setState(updateState);
-    setLocal("cart", updateState);
-  }
-
-  function reduceUnit(
-    product: IProduct,
-    state: IProduct[],
-    setState: React.Dispatch<React.SetStateAction<IProduct[]>>
-  ) {
-    const updateState = state.map((item) => {
-      if (item.id === product.id && item.amount >= 2) {
-        item.amount -= 1;
-      }
-      return item;
-    });
-    setState(updateState);
-    setLocal("cart", updateState);
-  }
-
-  function remove(
-    product: IProduct,
-    state: IProduct[],
-    setState: React.Dispatch<React.SetStateAction<IProduct[]>>
-  ) {
-    const updateState = state.filter((item) => item.id !== product.id);
-    setState(updateState);
-    setLocal("cart", updateState);
-  }
 
   return (
     <section className={styles.contianer_cart_products}>
@@ -112,7 +88,11 @@ const Cart = () => {
           </li>
         ))}
       </ul>
-      <div className={styles.container_card_total}></div>
+      <div className={styles.container_card_total}>
+        <h3>Resumo</h3>
+        <p> Valor Total:</p>
+        <span>{total(cart)}</span>
+      </div>
     </section>
   );
 };
