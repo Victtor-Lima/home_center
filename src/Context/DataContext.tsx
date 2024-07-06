@@ -4,7 +4,7 @@ import {
   Obj,
   SearchByCategory,
 } from "../Utility_functions/types_project/types";
-import { fetchData } from "../Hooks/fetchData";
+import { fetchData } from "../Utility_functions/fetchData";
 
 export const DataContext = React.createContext<IDataContext | null>(null);
 

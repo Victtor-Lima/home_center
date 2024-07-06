@@ -1,5 +1,3 @@
-import { SearchByCategory } from "../Utility_functions/types_project/types";
-
 export async function fetchData<T>(url: string): Promise<T | null> {
   try {
     const response = await fetch(url);

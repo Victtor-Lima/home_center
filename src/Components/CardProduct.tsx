@@ -1,4 +1,3 @@
-import React from "react";
 import { ICard } from "../Utility_functions/types_project/types";
 import PriceDiscounts from "./PriceDiscounts";
 import ButtonFavorite from "./ButtonFavorite";

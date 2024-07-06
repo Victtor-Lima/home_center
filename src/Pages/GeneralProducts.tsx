@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import CardList from "../Components/CardList";
-import DataContext from "../Context/DataContext";
 import NavSidebar from "../Components/NavSidebar";
 import styles from "../Style/CategoryProducts.module.css";
 import { useParams } from "react-router-dom";
+import { SearchByCategory } from "../Utility_functions/types_project/types";
+import { fetchData } from "../Utility_functions/fetchData";
 
 export const StyleCategoryProducts: React.CSSProperties = {
   display: "grid",
@@ -11,24 +12,27 @@ export const StyleCategoryProducts: React.CSSProperties = {
 };
 
 const GeneralProducts = () => {
+  const [data, setData] = React.useState<SearchByCategory | null>(null);
   const { id } = useParams();
-  const context = React.useContext(DataContext);
 
   React.useEffect(() => {
-    context?.seturlProducts(
-      `https://api.mercadolibre.com/sites/MLB/search?category=${id?.replace(
-        /-/g,
-        " "
-      )}`
-    );
-  }, [context, id]);
+    async function fetch() {
+      const data = await fetchData<SearchByCategory>(
+        `https://api.mercadolibre.com/sites/MLB/search?category=${id?.replace(
+          /-/g,
+          " "
+        )}`
+      );
+      setData(data);
+    }
+    fetch();
+  }, [id]);
 
-  if (context === null) return;
-  if (context.data === null) return "Carregando...";
+  if (data === null) return "Carregando...";
   return (
     <section className={styles.wrapper_category_products}>
-      <NavSidebar />
-      <CardList data={context.data} />
+      <NavSidebar data={data} />
+      <CardList data={data} />
     </section>
   );
 };

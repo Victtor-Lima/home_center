@@ -1,6 +1,7 @@
 .header > div {
   display: grid;
   grid-template-columns: auto 3fr auto auto;
+  justify-items: center;
   gap: 20px;
   align-items: center;
   max-width: 1200px;
@@ -18,5 +19,5 @@
 }
 
 .logo {
-  width: 120px;
+  width: 100px;
 }

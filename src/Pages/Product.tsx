@@ -8,7 +8,7 @@ import {
 import CardProduct from "../Components/CardProduct";
 import styles from "../Style/Product.module.css";
 import { getLocal } from "../Utility_functions/localstorage_funcs";
-import { fetchData } from "../Hooks/fetchData";
+import { fetchData } from "../Utility_functions/fetchData";
 
 const Product = () => {
   const [data, setData] = React.useState<SearchByCategory | null>(null);
