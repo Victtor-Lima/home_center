@@ -3,7 +3,7 @@ import CardCart from "../Components/CardCart";
 import { IoMdAddCircle } from "react-icons/io";
 import { IoIosRemoveCircle } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
-import { getLocal, setLocal } from "../Utility_functions/localstorage_funcs";
+import { getLocal } from "../Utility_functions/localstorage_funcs";
 import { IProduct } from "../Utility_functions/types_project/types";
 import styles from "../Style/Cart.module.css";
 import {

@@ -8,6 +8,7 @@ import SpecificProducts from "./Pages/SpecificProducts";
 import Favorite from "./Pages/Favorite";
 import Cart from "./Pages/Cart";
 import Product from "./Pages/Product";
+import SearchProducts from "./Pages/SearchProducts";
 
 function App() {
   return (
@@ -18,8 +19,12 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/c/:id/:id" element={<GeneralProducts />} />
-              <Route path={`/:id`} element={<SpecificProducts />} />
+              <Route path="/search/:id" element={<SearchProducts />} />
+              <Route path="/c/:category/:id" element={<GeneralProducts />} />
+              <Route
+                path={`/:subcategory/:id`}
+                element={<SpecificProducts />}
+              />
               <Route path={`/favorite`} element={<Favorite />} />
               <Route path={`/cart`} element={<Cart />} />
               <Route path={`/produto/:id`} element={<Product />} />

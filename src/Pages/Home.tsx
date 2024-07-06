@@ -1,4 +1,3 @@
-import React from "react";
 import CardGeneralProd from "../Components/CardGeneralProd";
 import styles from "../Style/Home.module.css";
 

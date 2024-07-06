@@ -1,19 +1,19 @@
 import React from "react";
 import styles from "../Style/Card.module.css";
 import PriceDiscounts from "./PriceDiscounts";
-import { ICard } from "../Utility_functions/types_project/types";
+import { ICardFavorite } from "../Utility_functions/types_project/types";
 import ButtonFavorite from "./ButtonFavorite";
 import { Link } from "react-router-dom";
 
 export function normalizeString(string: string) {
   return string
     .normalize("NFD")
-    .replace(/[\u0300-\u036f%]/g, "")
+    .replace(/[\u0300-\u036f%,/]/g, "")
     .replace(/\s+/g, "-")
     .toLocaleLowerCase();
 }
 
-const Card = ({ product, arrFavorite }: ICard) => {
+const Card = ({ product, arrFavorite }: ICardFavorite) => {
   return (
     <div key={product.id} className={styles.container_card_product}>
       <Link to={`/produto/${normalizeString(product.title)}`}>

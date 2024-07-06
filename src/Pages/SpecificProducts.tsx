@@ -1,18 +1,33 @@
 import NavSidebar from "../Components/NavSidebar";
 import CardList from "../Components/CardList";
 import { StyleCategoryProducts } from "./GeneralProducts";
-import { useContext } from "react";
-import DataContext from "../Context/DataContext";
+import React from "react";
+import { fetchData } from "../Utility_functions/fetchData";
+import { SearchByCategory } from "../Utility_functions/types_project/types";
+import { useParams } from "react-router-dom";
 
 const SpecificProducts = () => {
-  const context = useContext(DataContext);
+  const [data, setData] = React.useState<SearchByCategory | null>(null);
+  const { id } = useParams();
 
-  if (context === null) return;
-  if (context.data === null) return "Carregando...";
+  React.useEffect(() => {
+    async function fetch() {
+      const data = await fetchData<SearchByCategory>(
+        `https://api.mercadolibre.com/sites/MLB/search?category=${id?.replace(
+          /-/g,
+          " "
+        )}`
+      );
+      setData(data);
+    }
+    fetch();
+  }, [id]);
+
+  if (data === null) return "Carregando...";
   return (
     <section style={StyleCategoryProducts}>
-      <NavSidebar />
-      <CardList data={context.data} />
+      <NavSidebar data={data} />
+      <CardList data={data} />
     </section>
   );
 };
