@@ -2,8 +2,11 @@ import React from "react";
 import styles from "../Style/InputSearch.module.css";
 import { useNavigate } from "react-router-dom";
 import { normalizeString } from "./Card";
+import { ButtonSearch } from "../Style/styled_search/ButtonSearch";
+import { Input } from "../Style/InputSearch";
+import { FormSearch } from "../Style/styled_search/FormSearch";
 
-const InputSearch = () => {
+const Search = () => {
   const [inputValue, setInputValue] = React.useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -15,20 +18,14 @@ const InputSearch = () => {
   }
 
   return (
-    <form className={styles.form_search}>
-      <input
-        className={styles.input_search}
+    <FormSearch>
+      <Input
         type="text"
         onChange={({ target }) => setInputValue(target.value)}
       />
-      <button
-        className={styles.button_search}
-        onClick={(event) => search(event)}
-      >
-        Buscar
-      </button>
-    </form>
+      <ButtonSearch onClick={(event) => search(event)}>Buscar</ButtonSearch>
+    </FormSearch>
   );
 };
 
-export default InputSearch;
+export default Search;

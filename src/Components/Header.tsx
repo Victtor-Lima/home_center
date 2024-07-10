@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import InputSearch from "./InputSearch";
+import Search from "./Search";
 import styles from "../Style/Header.module.css";
 import logo from "../../public/logo.svg";
 import icfavorite from "../../public/icon_favorite.svg";
@@ -12,7 +12,7 @@ const Header = () => {
         <Link to="/" className={styles.link_tohome}>
           <img className={styles.logo} src={logo} alt="Logo da Home Center" />
         </Link>
-        <InputSearch />
+        <Search />
         <Link to="/favorite" className={styles.link_tohome}>
           <img
             className="centralizado"
