@@ -1,11 +1,11 @@
 import React from "react";
-import Card from "./Card";
 import styles from "../Style/CardList.module.css";
 import {
   IProduct,
   SearchByCategory,
 } from "../Utility_functions/types_project/types";
 import { getLocal } from "../Utility_functions/localstorage_funcs";
+import CardProduct from "./CardProduct/Index";
 
 const CardList = ({ data }: { data: SearchByCategory }) => {
   const [favorite, setFavorite] = React.useState<IProduct[]>([]);
@@ -22,7 +22,10 @@ const CardList = ({ data }: { data: SearchByCategory }) => {
       <ul className={styles.wrapper_container_card_product}>
         {data.results.map((product) => (
           <li key={product.id}>
-            <Card product={product} arrFavorite={[favorite, setFavorite]} />
+            <CardProduct
+              product={product}
+              arrFavorite={[favorite, setFavorite]}
+            />
           </li>
         ))}
       </ul>

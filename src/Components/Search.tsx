@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { normalizeString } from "./Card";
 import { Input } from "../Style/styled_search/InputSearch";
 import { FormSearch } from "../Style/styled_search/FormSearch";
 import { Button } from "./ButtonFavorite/Styled";
+import { normalizeString } from "../Utility_functions/normalizeString";
 
 const Search = () => {
   const [inputValue, setInputValue] = React.useState<string | null>(null);

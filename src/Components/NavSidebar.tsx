@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "../Style/NavSidebar.module.css";
 import { SearchByCategory } from "../Utility_functions/types_project/types";
-import { normalizeString } from "./Card";
+import { normalizeString } from "../Utility_functions/normalizeString";
 
 const NavSidebar = ({ data }: { data: SearchByCategory }) => {
   if (data === null) return;
