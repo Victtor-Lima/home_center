@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../Components/Card";
 import { fetchData } from "../Utility_functions/fetchData";
 import {
   IProduct,
@@ -7,6 +6,7 @@ import {
 } from "../Utility_functions/types_project/types";
 import { useParams } from "react-router-dom";
 import styles from "../Style/SearchProducts.module.css";
+import CardProduct from "../Components/CardProduct/Index";
 
 const SearchProducts = () => {
   const [data, setData] = React.useState<SearchByCategory | null>(null);
@@ -32,7 +32,10 @@ const SearchProducts = () => {
       <ul className={styles.container_cards_searchproducts}>
         {data.results.map((product) => (
           <li key={product.id}>
-            <Card product={product} arrFavorite={[favorite, setFavorite]} />
+            <CardProduct
+              product={product}
+              arrFavorite={[favorite, setFavorite]}
+            />
           </li>
         ))}
       </ul>
