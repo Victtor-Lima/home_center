@@ -1,10 +1,9 @@
 import React from "react";
-import styles from "../Style/InputSearch.module.css";
 import { useNavigate } from "react-router-dom";
 import { normalizeString } from "./Card";
-import { ButtonSearch } from "../Style/styled_search/ButtonSearch";
-import { Input } from "../Style/InputSearch";
+import { Input } from "../Style/styled_search/InputSearch";
 import { FormSearch } from "../Style/styled_search/FormSearch";
+import { Button } from "./ButtonFavorite/Styled";
 
 const Search = () => {
   const [inputValue, setInputValue] = React.useState<string | null>(null);
@@ -23,7 +22,7 @@ const Search = () => {
         type="text"
         onChange={({ target }) => setInputValue(target.value)}
       />
-      <ButtonSearch onClick={(event) => search(event)}>Buscar</ButtonSearch>
+      <Button onClick={(event) => search(event)}>Buscar</Button>
     </FormSearch>
   );
 };

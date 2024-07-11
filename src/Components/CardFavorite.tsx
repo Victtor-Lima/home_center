@@ -2,7 +2,8 @@ import React from "react";
 import { ICardFavorite } from "../Utility_functions/types_project/types";
 import styles from "../Style/CardFavorite.module.css";
 import PriceDiscounts from "./PriceDiscounts";
-import ButtonDelete from "./ButtonDelete";
+import { remove } from "../Utility_functions/quantityManipulation";
+import ButtonDelete from "./ButtonDelete/Index";
 
 const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
   return (
@@ -35,8 +36,11 @@ const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
           </div>
         </div>
         <ButtonDelete
-          deleteFromFavorites={[product, arrFavorite, "favorites"]}
-        />
+          onClick={() => remove(product, arrFavorite, "favorites")}
+          color="#ff7a44"
+        >
+          Excluir
+        </ButtonDelete>
       </div>
     </div>
   );

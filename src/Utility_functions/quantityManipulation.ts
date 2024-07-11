@@ -33,10 +33,12 @@ export function reduceUnit(
 
 export function remove(
   product: IProduct,
-  state: IProduct[],
-  setState: React.Dispatch<React.SetStateAction<IProduct[]>>
+  arrState: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
+  nameList: string
 ) {
+  const [state, setState] = arrState;
+
   const updateState = state.filter((item) => item.id !== product.id);
   setState(updateState);
-  setLocal("cart", updateState);
+  setLocal(nameList, updateState);
 }

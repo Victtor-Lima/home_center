@@ -1,21 +1,17 @@
-import React from "react";
-import styles from "../Style/ButtonFavorite.module.css";
 import { MdFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
-import { IButtonFavorite } from "../Utility_functions/types_project/types";
-import { handleFavoriteAction } from "../Utility_functions/handleFavoriteAction";
+import { handleFavoriteAction } from "../../Utility_functions/handleFavoriteAction";
+import { IButtonFavorite } from "../../Utility_functions/types_project/types";
+import * as S from "./Styled";
 
 const ButtonFavorite = ({ addToFavorites }: IButtonFavorite) => {
   return (
-    <button
-      className={styles.button_favorite}
-      onClick={() => handleFavoriteAction(addToFavorites)}
-    >
+    <S.ButtonFavorite onClick={() => handleFavoriteAction(addToFavorites)}>
       {addToFavorites[1][0].find((item) => item.id === addToFavorites[0].id) ? (
         <MdOutlineFavorite color="#ff7a44" size="1.9em" />
       ) : (
         <MdFavoriteBorder color="#fd9d77" size="1.9em" />
       )}
-    </button>
+    </S.ButtonFavorite>
   );
 };
 
