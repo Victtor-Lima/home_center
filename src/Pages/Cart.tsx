@@ -11,6 +11,7 @@ import {
   reduceUnit,
   remove,
 } from "../Utility_functions/quantityManipulation";
+import ButtonDelete from "../Components/ButtonDelete/Index";
 
 function total(cart: IProduct[]) {
   const priceTotal: string = cart
@@ -78,12 +79,11 @@ const Cart = () => {
                   currency: "BRL",
                 })}
               </span>
-              <button
-                onClick={() => remove(item, cart, setCart)}
-                className={styles.cart_product_btn}
+              <ButtonDelete
+                onClick={() => remove(item, [cart, setCart], "cart")}
               >
                 <MdDelete size="1.6em" />
-              </button>
+              </ButtonDelete>
             </div>
           </li>
         ))}

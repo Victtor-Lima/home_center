@@ -1,13 +1,7 @@
 import React from "react";
 import { IProduct } from "../Utility_functions/types_project/types";
 
-const CardCart = ({
-  item,
-  setCart,
-}: {
-  item: IProduct;
-  setCart: React.Dispatch<React.SetStateAction<IProduct[]>>;
-}) => {
+const CardCart = ({ item }: { item: IProduct }) => {
   return (
     <div style={{ display: "flex" }}>
       <img src={item.thumbnail} alt={item.title} />

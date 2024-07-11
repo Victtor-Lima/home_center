@@ -1,8 +1,8 @@
 import { ICard } from "../Utility_functions/types_project/types";
 import PriceDiscounts from "./PriceDiscounts";
-import ButtonFavorite from "./ButtonFavorite";
 import styles from "../Style/CardProduct.module.css";
 import ButtonCart from "./ButtonCart";
+import ButtonFavorite from "./ButtonFavorite/Index";
 
 const CardProduct = ({ product, arrFavorite, arrCart }: ICard) => {
   return (

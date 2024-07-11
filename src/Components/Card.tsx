@@ -2,8 +2,10 @@ import React from "react";
 import styles from "../Style/Card.module.css";
 import PriceDiscounts from "./PriceDiscounts";
 import { ICardFavorite } from "../Utility_functions/types_project/types";
-import ButtonFavorite from "./ButtonFavorite";
 import { Link } from "react-router-dom";
+import * as S from "./ButtonFavorite/Styled";
+import { handleFavoriteAction } from "../Utility_functions/handleFavoriteAction";
+import { MdFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
 
 export function normalizeString(string: string) {
   return string
@@ -41,7 +43,17 @@ const Card = ({ product, arrFavorite }: ICardFavorite) => {
           <PriceDiscounts product={product} />
         </div>
       </Link>
-      <ButtonFavorite addToFavorites={[product, arrFavorite, "favorites"]} />
+      <S.ButtonFavorite
+        onClick={() =>
+          handleFavoriteAction([product, arrFavorite, "favorites"])
+        }
+      >
+        {arrFavorite[0].find((item) => item.id === product.id) ? (
+          <MdOutlineFavorite color="#ff7a44" size="1.9em" />
+        ) : (
+          <MdFavoriteBorder color="#fd9d77" size="1.9em" />
+        )}
+      </S.ButtonFavorite>
     </div>
   );
 };
