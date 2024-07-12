@@ -1,8 +1,5 @@
 import React from "react";
-import CardCart from "../Components/CardCart";
-import { IoMdAddCircle } from "react-icons/io";
-import { IoIosRemoveCircle } from "react-icons/io";
-import { MdDelete } from "react-icons/md";
+import CardCart from "../Components/CardCart/Index";
 import { getLocal } from "../Utility_functions/localstorage_funcs";
 import { IProduct } from "../Utility_functions/types_project/types";
 import styles from "../Style/Cart.module.css";
@@ -49,42 +46,7 @@ const Cart = () => {
       <ul className={styles.cart_list_products}>
         {cart.map((item) => (
           <li key={item.id} className={styles.cart_list_product}>
-            <div className={styles.cart_product_content}>
-              <img src={item.thumbnail} alt={item.title} />
-              <h3 className={styles.cart_product_title}>{item.title}</h3>
-              <div className={styles.container_cart_units}>
-                <button
-                  onClick={() => reduceUnit(item, cart, setCart)}
-                  className={styles.cart_product_btn}
-                >
-                  <IoIosRemoveCircle size="1.6em" />
-                </button>
-                <span>{item.amount}</span>
-                <button
-                  onClick={() => addUnit(item, cart, setCart)}
-                  className={styles.cart_product_btn}
-                >
-                  <IoMdAddCircle size="1.6em" />
-                </button>
-              </div>
-              <span>
-                {item.price.toLocaleString("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                })}
-              </span>
-              <span>
-                {(item.amount * item.price).toLocaleString("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                })}
-              </span>
-              <ButtonDelete
-                onClick={() => remove(item, [cart, setCart], "cart")}
-              >
-                <MdDelete size="1.6em" />
-              </ButtonDelete>
-            </div>
+            <CardCart item={item} cart={cart} setCart={setCart} />
           </li>
         ))}
       </ul>
