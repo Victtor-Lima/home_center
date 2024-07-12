@@ -1,11 +1,9 @@
 import * as S from "./Styled";
-import { ButtonFavorite } from "../ButtonFavorite/Styled";
 import PriceDiscounts from "../PriceDiscounts";
 import { ICardFavorite } from "../../Utility_functions/types_project/types";
 import { Link } from "react-router-dom";
-import { handleFavoriteAction } from "../../Utility_functions/handleFavoriteAction";
-import { MdFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
 import { normalizeString } from "../../Utility_functions/normalizeString";
+import ButtonFavorite from "../ButtonFavorite/Index";
 
 const CardProduct = ({ product, arrFavorite }: ICardFavorite) => {
   return (
@@ -31,17 +29,7 @@ const CardProduct = ({ product, arrFavorite }: ICardFavorite) => {
           <PriceDiscounts product={product} />
         </S.ContainerPriceFinal>
       </Link>
-      <ButtonFavorite
-        onClick={() =>
-          handleFavoriteAction([product, arrFavorite, "favorites"])
-        }
-      >
-        {arrFavorite[0].find((item) => item.id === product.id) ? (
-          <MdOutlineFavorite color="#ff7a44" size="1.9em" />
-        ) : (
-          <MdFavoriteBorder color="#fd9d77" size="1.9em" />
-        )}
-      </ButtonFavorite>
+      <ButtonFavorite addToFavorites={[product, arrFavorite, "favorites"]} />
     </S.ContainerCardProduct>
   );
 };

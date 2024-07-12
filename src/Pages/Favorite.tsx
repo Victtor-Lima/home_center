@@ -1,5 +1,5 @@
 import React from "react";
-import CardFavorite from "../Components/CardFavorite";
+import CardFavorite from "../Components/CardFavorite/Index";
 import { getLocal } from "../Utility_functions/localstorage_funcs";
 import styles from "../Style/Favorite.module.css";
 import { IProduct } from "../Utility_functions/types_project/types";
