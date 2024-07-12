@@ -1,8 +1,9 @@
 import { ICard } from "../Utility_functions/types_project/types";
 import PriceDiscounts from "./PriceDiscounts";
 import styles from "../Style/CardProduct.module.css";
-import ButtonCart from "./ButtonCart";
 import ButtonFavorite from "./ButtonFavorite/Index";
+import { addToListLocal } from "../Utility_functions/addToListLocal";
+import ButtonCart from "./ButtonCart/Index";
 
 const CardProduct = ({ product, arrFavorite, arrCart }: ICard) => {
   return (
@@ -34,7 +35,9 @@ const CardProduct = ({ product, arrFavorite, arrCart }: ICard) => {
           <PriceDiscounts product={product} />
         </div>
         <ButtonFavorite addToFavorites={[product, arrFavorite, "favorites"]} />
-        <ButtonCart arrCart={[product, arrCart, "cart"]} />
+        <ButtonCart onClick={() => addToListLocal([product, arrCart, "cart"])}>
+          ADICIONAR
+        </ButtonCart>
       </div>
     </section>
   );
