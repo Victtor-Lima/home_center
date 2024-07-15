@@ -12,4 +12,8 @@ export const ButtonCart = styled.button`
   position: absolute;
   right: 10px;
   bottom: 10px;
+
+  &:active {
+    background: rgba(255, 87, 20, 0.726);
+  }
 `;

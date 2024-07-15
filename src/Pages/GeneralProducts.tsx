@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import CardList from "../Components/CardList";
-import NavSidebar from "../Components/NavSidebar";
+import NavSidebar from "../Components/NavSidebar/Index";
 import styles from "../Style/CategoryProducts.module.css";
 import { useParams } from "react-router-dom";
 import { SearchByCategory } from "../Utility_functions/types_project/types";
 import { fetchData } from "../Utility_functions/fetchData";
+import CardList from "../Components/CardList/Index";
 
 export const StyleCategoryProducts: React.CSSProperties = {
   display: "grid",

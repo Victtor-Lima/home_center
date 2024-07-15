@@ -1,8 +1,8 @@
 import * as S from "./Styled";
-import { ICardFavorite } from "../../Utility_functions/types_project/types";
-import PriceDiscounts from "../PriceDiscounts";
-import { remove } from "../../Utility_functions/quantityManipulation";
 import ButtonDelete from "../ButtonDelete/Index";
+import PriceDiscounts from "../PriceDiscounts/Index";
+import { ICardFavorite } from "../../Utility_functions/types_project/types";
+import { remove } from "../../Utility_functions/quantityManipulation";
 
 const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
   return (

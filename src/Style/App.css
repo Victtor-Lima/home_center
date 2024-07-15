@@ -32,14 +32,3 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-.centralizado {
-  display: grid;
-  align-items: center;
-}
-
-.price_discounts {
-  align-self: self-start;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
-}
