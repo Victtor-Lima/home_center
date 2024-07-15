@@ -1,9 +1,8 @@
 import React from "react";
+import * as S from "./Styled";
+import { Button } from "../ButtonFavorite/Styled";
 import { useNavigate } from "react-router-dom";
-import { Input } from "../Style/styled_search/InputSearch";
-import { FormSearch } from "../Style/styled_search/FormSearch";
-import { Button } from "./ButtonFavorite/Styled";
-import { normalizeString } from "../Utility_functions/normalizeString";
+import { normalizeString } from "../../Utility_functions/normalizeString";
 
 const Search = () => {
   const [inputValue, setInputValue] = React.useState<string | null>(null);
@@ -17,13 +16,13 @@ const Search = () => {
   }
 
   return (
-    <FormSearch>
-      <Input
+    <S.FormSearch>
+      <S.Input
         type="text"
         onChange={({ target }) => setInputValue(target.value)}
       />
-      <Button onClick={(event) => search(event)}>Buscar</Button>
-    </FormSearch>
+      <S.ButtonSearch onClick={(event) => search(event)}>Buscar</S.ButtonSearch>
+    </S.FormSearch>
   );
 };
 

@@ -1,5 +1,5 @@
 import * as S from "./Styled";
-import PriceDiscounts from "../PriceDiscounts";
+import PriceDiscounts from "../PriceDiscounts/Index";
 import { ICardFavorite } from "../../Utility_functions/types_project/types";
 import { Link } from "react-router-dom";
 import { normalizeString } from "../../Utility_functions/normalizeString";

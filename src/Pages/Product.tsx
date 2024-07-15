@@ -1,11 +1,10 @@
 import React from "react";
-import DataContext from "../Context/DataContext";
+import SpecificProduct from "../Components/EspecificProduct/Index";
 import { useParams } from "react-router-dom";
 import {
   IProduct,
   SearchByCategory,
 } from "../Utility_functions/types_project/types";
-import CardProduct from "../Components/CardProduct";
 import styles from "../Style/Product.module.css";
 import { getLocal } from "../Utility_functions/localstorage_funcs";
 import { fetchData } from "../Utility_functions/fetchData";
@@ -46,7 +45,7 @@ const Product = () => {
   if (data === null) return "carregando...";
   return (
     <section className={styles.container_page_product}>
-      <CardProduct
+      <SpecificProduct
         product={data.results[0]}
         arrFavorite={[favorite, setFavorite]}
         arrCart={[cart, setCart]}
