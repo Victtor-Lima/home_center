@@ -1,8 +1,8 @@
 import React from "react";
-import CardFavorite from "../Components/CardFavorite/Index";
-import { getLocal } from "../Utility_functions/localstorage_funcs";
-import styles from "../Style/Favorite.module.css";
-import { IProduct } from "../Utility_functions/types_project/types";
+import * as S from "./Styled";
+import CardFavorite from "../../Components/CardFavorite/Index";
+import { getLocal } from "../../Utility_functions/localstorage_funcs";
+import { IProduct } from "../../Utility_functions/types_project/types";
 
 const Favorite = () => {
   const [favorite, setFavorite] = React.useState<Array<IProduct>>([]);
@@ -16,8 +16,8 @@ const Favorite = () => {
   }, []);
 
   return (
-    <section className={styles.wrapper_favorite}>
-      <h1 className={styles.favorite_title}>Favoritos</h1>
+    <S.ContainerFavorite>
+      <S.FavoriteTitle>Favoritos</S.FavoriteTitle>
       {favorite.map((product) => (
         <CardFavorite
           key={product.id}
@@ -25,7 +25,7 @@ const Favorite = () => {
           arrFavorite={[favorite, setFavorite]}
         />
       ))}
-    </section>
+    </S.ContainerFavorite>
   );
 };
 

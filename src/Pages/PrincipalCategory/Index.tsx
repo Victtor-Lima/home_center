@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import NavSidebar from "../Components/NavSidebar/Index";
-import styles from "../Style/CategoryProducts.module.css";
+import React from "react";
+import * as S from "./Styled";
+import CardList from "../../Components/CardList/Index";
+import NavSidebar from "../../Components/NavSidebar/Index";
+import { SearchByCategory } from "../../Utility_functions/types_project/types";
+import { fetchData } from "../../Utility_functions/fetchData";
 import { useParams } from "react-router-dom";
-import { SearchByCategory } from "../Utility_functions/types_project/types";
-import { fetchData } from "../Utility_functions/fetchData";
-import CardList from "../Components/CardList/Index";
 
 export const StyleCategoryProducts: React.CSSProperties = {
   display: "grid",
@@ -30,10 +30,10 @@ const GeneralProducts = () => {
 
   if (data === null) return "Carregando...";
   return (
-    <section className={styles.wrapper_category_products}>
+    <S.ContainerPrincipalCategory>
       <NavSidebar data={data} />
       <CardList data={data} />
-    </section>
+    </S.ContainerPrincipalCategory>
   );
 };
 

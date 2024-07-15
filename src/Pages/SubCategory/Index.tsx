@@ -1,10 +1,10 @@
 import React from "react";
-import NavSidebar from "../Components/NavSidebar/Index";
-import CardList from "../Components/CardList/Index";
-import { fetchData } from "../Utility_functions/fetchData";
+import * as S from "./Styled";
+import NavSidebar from "../../Components/NavSidebar/Index";
+import CardList from "../../Components/CardList/Index";
+import { fetchData } from "../../Utility_functions/fetchData";
 import { useParams } from "react-router-dom";
-import { SearchByCategory } from "../Utility_functions/types_project/types";
-import { StyleCategoryProducts } from "./GeneralProducts";
+import { SearchByCategory } from "../../Utility_functions/types_project/types";
 
 const SpecificProducts = () => {
   const [data, setData] = React.useState<SearchByCategory | null>(null);
@@ -25,10 +25,10 @@ const SpecificProducts = () => {
 
   if (data === null) return "Carregando...";
   return (
-    <section style={StyleCategoryProducts}>
+    <S.ContainerPrincipalCategory>
       <NavSidebar data={data} />
       <CardList data={data} />
-    </section>
+    </S.ContainerPrincipalCategory>
   );
 };
 

@@ -1,13 +1,13 @@
 import React from "react";
-import SpecificProduct from "../Components/EspecificProduct/Index";
-import { useParams } from "react-router-dom";
+import * as S from "./Styled";
+import SpecificProduct from "../../Components/EspecificProduct/Index";
+import { fetchData } from "../../Utility_functions/fetchData";
+import { getLocal } from "../../Utility_functions/localstorage_funcs";
 import {
   IProduct,
   SearchByCategory,
-} from "../Utility_functions/types_project/types";
-import styles from "../Style/Product.module.css";
-import { getLocal } from "../Utility_functions/localstorage_funcs";
-import { fetchData } from "../Utility_functions/fetchData";
+} from "../../Utility_functions/types_project/types";
+import { useParams } from "react-router-dom";
 
 const Product = () => {
   const [data, setData] = React.useState<SearchByCategory | null>(null);
@@ -44,13 +44,13 @@ const Product = () => {
 
   if (data === null) return "carregando...";
   return (
-    <section className={styles.container_page_product}>
+    <S.ContainerProduct>
       <SpecificProduct
         product={data.results[0]}
         arrFavorite={[favorite, setFavorite]}
         arrCart={[cart, setCart]}
       />
-    </section>
+    </S.ContainerProduct>
   );
 };
 
