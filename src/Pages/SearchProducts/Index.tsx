@@ -1,12 +1,12 @@
 import React from "react";
-import { fetchData } from "../Utility_functions/fetchData";
+import * as S from "./Styled";
+import CardProduct from "../../Components/CardProduct/Index";
+import { fetchData } from "../../Utility_functions/fetchData";
 import {
   IProduct,
   SearchByCategory,
-} from "../Utility_functions/types_project/types";
+} from "../../Utility_functions/types_project/types";
 import { useParams } from "react-router-dom";
-import styles from "../Style/SearchProducts.module.css";
-import CardProduct from "../Components/CardProduct/Index";
 
 const SearchProducts = () => {
   const [data, setData] = React.useState<SearchByCategory | null>(null);
@@ -28,8 +28,8 @@ const SearchProducts = () => {
 
   if (data === null) return "Carregando...";
   return (
-    <section className={styles.container_earchproducts}>
-      <ul className={styles.container_cards_searchproducts}>
+    <S.ContainerSearchProducts>
+      <S.SearchProductsList>
         {data.results.map((product) => (
           <li key={product.id}>
             <CardProduct
@@ -38,8 +38,8 @@ const SearchProducts = () => {
             />
           </li>
         ))}
-      </ul>
-    </section>
+      </S.SearchProductsList>
+    </S.ContainerSearchProducts>
   );
 };
 

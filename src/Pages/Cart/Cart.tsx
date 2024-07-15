@@ -1,14 +1,8 @@
 import React from "react";
-import CardCart from "../Components/CardCart/Index";
-import { getLocal } from "../Utility_functions/localstorage_funcs";
-import { IProduct } from "../Utility_functions/types_project/types";
-import styles from "../Style/Cart.module.css";
-import {
-  addUnit,
-  reduceUnit,
-  remove,
-} from "../Utility_functions/quantityManipulation";
-import ButtonDelete from "../Components/ButtonDelete/Index";
+import * as S from "./Styled";
+import CardCart from "../../Components/CardCart/Index";
+import { getLocal } from "../../Utility_functions/localstorage_funcs";
+import { IProduct } from "../../Utility_functions/types_project/types";
 
 function total(cart: IProduct[]) {
   const priceTotal: string = cart
@@ -33,29 +27,29 @@ const Cart = () => {
   }, []);
 
   return (
-    <section className={styles.contianer_cart_products}>
-      <h1 className={styles.cart_title}>Carrinho</h1>
-      <div className={styles.container_cart_header}>
-        <ul className={styles.cart_header_list}>
+    <S.ContainerCart>
+      <S.CartTitle>Carrinho</S.CartTitle>
+      <S.ContainerHeaderCart>
+        <S.HeaderCartList>
           <li>Produto</li>
           <li>Quantidade</li>
           <li>Preço</li>
           <li>Total</li>
-        </ul>
-      </div>
-      <ul className={styles.cart_list_products}>
+        </S.HeaderCartList>
+      </S.ContainerHeaderCart>
+      <S.CartListProducts>
         {cart.map((item) => (
-          <li key={item.id} className={styles.cart_list_product}>
+          <S.Product key={item.id}>
             <CardCart item={item} cart={cart} setCart={setCart} />
-          </li>
+          </S.Product>
         ))}
-      </ul>
-      <div className={styles.container_card_total}>
+      </S.CartListProducts>
+      <S.CartSummary>
         <h3>Resumo</h3>
         <p> Valor Total:</p>
         <span>{total(cart)}</span>
-      </div>
-    </section>
+      </S.CartSummary>
+    </S.ContainerCart>
   );
 };
 
