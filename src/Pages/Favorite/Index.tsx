@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./Styled";
 import CardFavorite from "../../Components/CardFavorite/Index";
 import { getLocal } from "../../Utility_functions/localstorage_funcs";
-import { IProduct } from "../../Utility_functions/types_project/types";
+import { IProduct } from "../../typesProject/types";
 
 const Favorite = () => {
   const [favorite, setFavorite] = React.useState<Array<IProduct>>([]);

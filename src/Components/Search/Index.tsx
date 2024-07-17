@@ -1,6 +1,5 @@
 import React from "react";
 import * as S from "./Styled";
-import { Button } from "../ButtonFavorite/Styled";
 import { useNavigate } from "react-router-dom";
 import { normalizeString } from "../../Utility_functions/normalizeString";
 

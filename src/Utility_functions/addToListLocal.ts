@@ -1,6 +1,6 @@
 import React from "react";
 import { setLocal } from "./localstorage_funcs";
-import { IProduct } from "./types_project/types";
+import { IProduct } from "../typesProject/types";
 
 export function addToListLocal(
   arrState: [

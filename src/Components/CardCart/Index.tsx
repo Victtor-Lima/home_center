@@ -1,47 +1,44 @@
 import { IoIosRemoveCircle, IoMdAddCircle } from "react-icons/io";
 import * as S from "./Styled";
-import { IProduct } from "../../Utility_functions/types_project/types";
+import { ICardCart, IProduct } from "../../typesProject/types";
 import {
   addUnit,
   reduceUnit,
-  remove,
 } from "../../Utility_functions/quantityManipulation";
-import { ButtonDelete } from "../ButtonDelete/Styled";
+import ButtonDelete from "../ButtonDelete/Index";
 import { MdDelete } from "react-icons/md";
 
-type ICardCart = {
-  item: IProduct;
-  cart: IProduct[];
-  setCart: React.Dispatch<React.SetStateAction<IProduct[]>>;
-};
+const CardCart = ({ product, arrCart }: ICardCart) => {
+  const [cart, setCart] = arrCart;
 
-const CardCart = ({ item, cart, setCart }: ICardCart) => {
   return (
     <S.ContainerCardCart>
-      <img src={item.thumbnail} alt={item.title} />
-      <h3>{item.title}</h3>
+      <img src={product.thumbnail} alt={product.title} />
+      <h3>{product.title}</h3>
       <S.ContainerUnits>
-        <S.ButtonControllUnits onClick={() => reduceUnit(item, cart, setCart)}>
+        <S.ButtonControllUnits
+          onClick={() => reduceUnit(product, cart, setCart)}
+        >
           <IoIosRemoveCircle size="1.6em" />
         </S.ButtonControllUnits>
-        <span>{item.amount}</span>
-        <S.ButtonControllUnits onClick={() => addUnit(item, cart, setCart)}>
+        <span>{product.amount}</span>
+        <S.ButtonControllUnits onClick={() => addUnit(product, cart, setCart)}>
           <IoMdAddCircle size="1.6em" />
         </S.ButtonControllUnits>
       </S.ContainerUnits>
       <span>
-        {item.price.toLocaleString("pt-BR", {
+        {product.price.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         })}
       </span>
       <span>
-        {(item.amount * item.price).toLocaleString("pt-BR", {
+        {(product.amount * product.price).toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
         })}
       </span>
-      <ButtonDelete onClick={() => remove(item, [cart, setCart], "cart")}>
+      <ButtonDelete arrParams={[product, [cart, setCart], "cart"]}>
         <MdDelete size="1.6em" />
       </ButtonDelete>
     </S.ContainerCardCart>

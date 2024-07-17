@@ -3,10 +3,7 @@ import * as S from "./Styled";
 import SpecificProduct from "../../Components/EspecificProduct/Index";
 import { fetchData } from "../../Utility_functions/fetchData";
 import { getLocal } from "../../Utility_functions/localstorage_funcs";
-import {
-  IProduct,
-  SearchByCategory,
-} from "../../Utility_functions/types_project/types";
+import { IProduct, SearchByCategory } from "../../typesProject/types";
 import { useParams } from "react-router-dom";
 
 const Product = () => {
