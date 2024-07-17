@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import * as S from "./Styled";
 import { SearchByCategory } from "../../typesProject/types";
-import { normalizeString } from "../../Utility_functions/normalizeString";
+import { normalizeString } from "../../utilityFunctions/normalizeString";
 
 const NavSidebar = ({ data }: { data: SearchByCategory }) => {
   if (data === null) return;

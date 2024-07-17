@@ -1,9 +1,9 @@
 import React from "react";
 import * as S from "./Styled";
-import CardList from "../../Components/CardList/Index";
-import NavSidebar from "../../Components/NavSidebar/Index";
+import CardList from "../../components/CardList/Index";
+import NavSidebar from "../../components/NavSidebar/Index";
 import { SearchByCategory } from "../../typesProject/types";
-import { fetchData } from "../../Utility_functions/fetchData";
+import { fetchData } from "../../utilityFunctions/fetchData";
 import { useParams } from "react-router-dom";
 
 export const StyleCategoryProducts: React.CSSProperties = {

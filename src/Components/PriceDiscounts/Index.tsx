@@ -1,6 +1,6 @@
 import * as S from "./Styled";
 import { IProduct } from "../../typesProject/types";
-import { price_discounts } from "../../Utility_functions/price_discount";
+import { price_discounts } from "../../utilityFunctions/price_discount";
 
 const PriceDiscounts = ({ product }: { product: IProduct }) => {
   return (

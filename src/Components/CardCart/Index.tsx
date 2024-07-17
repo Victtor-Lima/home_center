@@ -4,7 +4,7 @@ import { ICardCart, IProduct } from "../../typesProject/types";
 import {
   addUnit,
   reduceUnit,
-} from "../../Utility_functions/quantityManipulation";
+} from "../../utilityFunctions/quantityManipulation";
 import ButtonDelete from "../ButtonDelete/Index";
 import { MdDelete } from "react-icons/md";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Styled";
 import { useNavigate } from "react-router-dom";
-import { normalizeString } from "../../Utility_functions/normalizeString";
+import { normalizeString } from "../../utilityFunctions/normalizeString";
 
 const Search = () => {
   const [inputValue, setInputValue] = React.useState<string | null>(null);

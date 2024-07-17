@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Styled";
-import CardProduct from "../../Components/CardProduct/Index";
-import { fetchData } from "../../Utility_functions/fetchData";
+import CardProduct from "../../components/CardProduct/Index";
+import { fetchData } from "../../utilityFunctions/fetchData";
 import { IProduct, SearchByCategory } from "../../typesProject/types";
 import { useParams } from "react-router-dom";
 
