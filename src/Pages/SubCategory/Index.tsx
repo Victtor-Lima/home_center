@@ -4,7 +4,7 @@ import NavSidebar from "../../Components/NavSidebar/Index";
 import CardList from "../../Components/CardList/Index";
 import { fetchData } from "../../Utility_functions/fetchData";
 import { useParams } from "react-router-dom";
-import { SearchByCategory } from "../../Utility_functions/types_project/types";
+import { SearchByCategory } from "../../typesProject/types";
 
 const SpecificProducts = () => {
   const [data, setData] = React.useState<SearchByCategory | null>(null);

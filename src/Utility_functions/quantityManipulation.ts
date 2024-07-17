@@ -1,5 +1,5 @@
 import { setLocal } from "./localstorage_funcs";
-import { IProduct } from "./types_project/types";
+import { IProduct } from "../typesProject/types";
 
 export function addUnit(
   product: IProduct,
@@ -32,10 +32,13 @@ export function reduceUnit(
 }
 
 export function remove(
-  product: IProduct,
-  arrState: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
-  nameList: string
+  arrDelete: [
+    IProduct,
+    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
+    string
+  ]
 ) {
+  const [product, arrState, nameList] = arrDelete;
   const [state, setState] = arrState;
 
   const updateState = state.filter((item) => item.id !== product.id);

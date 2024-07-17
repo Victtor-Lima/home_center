@@ -2,8 +2,7 @@ import * as S from "./Styled";
 import ButtonCart from "../ButtonCart/Index";
 import PriceDiscounts from "../PriceDiscounts/Index";
 import ButtonFavorite from "../ButtonFavorite/Index";
-import { ICard } from "../../Utility_functions/types_project/types";
-import { addToListLocal } from "../../Utility_functions/addToListLocal";
+import { ICard } from "../../typesProject/types";
 
 const SpecificProduct = ({ product, arrFavorite, arrCart }: ICard) => {
   return (
@@ -32,12 +31,8 @@ const SpecificProduct = ({ product, arrFavorite, arrCart }: ICard) => {
             </S.PriceFinal>
             <PriceDiscounts product={product} />
           </S.ContainerPriceFinal>
-          <ButtonFavorite
-            addToFavorites={[product, arrFavorite, "favorites"]}
-          />
-          <ButtonCart
-            onClick={() => addToListLocal([product, arrCart, "cart"])}
-          >
+          <ButtonFavorite arrParams={[product, arrFavorite, "favorites"]} />
+          <ButtonCart arrParams={[product, arrCart, "cart"]}>
             ADICIONAR
           </ButtonCart>
         </S.ContainerContent>

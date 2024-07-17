@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./Styled";
 import CardList from "../../Components/CardList/Index";
 import NavSidebar from "../../Components/NavSidebar/Index";
-import { SearchByCategory } from "../../Utility_functions/types_project/types";
+import { SearchByCategory } from "../../typesProject/types";
 import { fetchData } from "../../Utility_functions/fetchData";
 import { useParams } from "react-router-dom";
 

@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./Styled";
 import CardCart from "../../Components/CardCart/Index";
 import { getLocal } from "../../Utility_functions/localstorage_funcs";
-import { IProduct } from "../../Utility_functions/types_project/types";
+import { IProduct } from "../../typesProject/types";
 
 function total(cart: IProduct[]) {
   const priceTotal: string = cart
@@ -40,7 +40,7 @@ const Cart = () => {
       <S.CartListProducts>
         {cart.map((item) => (
           <S.Product key={item.id}>
-            <CardCart item={item} cart={cart} setCart={setCart} />
+            <CardCart product={item} arrCart={[cart, setCart]} />
           </S.Product>
         ))}
       </S.CartListProducts>

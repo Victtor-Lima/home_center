@@ -1,10 +1,13 @@
-import React, { ButtonHTMLAttributes } from "react";
 import * as S from "./Styled";
+import { IButton } from "../../typesProject/types";
+import { addToListLocal } from "../../Utility_functions/addToListLocal";
 
-const ButtonCart: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = (
-  props
-) => {
-  return <S.ButtonCart {...props}>{props.children}</S.ButtonCart>;
+const ButtonCart = ({ arrParams, children }: IButton) => {
+  return (
+    <S.ButtonCart onClick={() => addToListLocal(arrParams)}>
+      {children}
+    </S.ButtonCart>
+  );
 };
 
 export default ButtonCart;

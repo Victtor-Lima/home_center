@@ -1,9 +1,6 @@
 import React from "react";
 import * as S from "./Styled";
-import {
-  IProduct,
-  SearchByCategory,
-} from "../../Utility_functions/types_project/types";
+import { IProduct, SearchByCategory } from "../../typesProject/types";
 import { getLocal } from "../../Utility_functions/localstorage_funcs";
 import CardProduct from "../CardProduct/Index";
 

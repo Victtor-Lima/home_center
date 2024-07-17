@@ -2,10 +2,7 @@ import React from "react";
 import * as S from "./Styled";
 import CardProduct from "../../Components/CardProduct/Index";
 import { fetchData } from "../../Utility_functions/fetchData";
-import {
-  IProduct,
-  SearchByCategory,
-} from "../../Utility_functions/types_project/types";
+import { IProduct, SearchByCategory } from "../../typesProject/types";
 import { useParams } from "react-router-dom";
 
 const SearchProducts = () => {

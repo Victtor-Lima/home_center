@@ -1,4 +1,5 @@
 // TYPES CARD
+import React from "react";
 
 export type ICard = {
   product: IProduct;
@@ -6,29 +7,12 @@ export type ICard = {
   arrCart: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
 };
 
-export type ICardFavorite = {
-  product: IProduct;
-  arrFavorite: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
-};
+export type ICardFavorite = Pick<ICard, "product" | "arrFavorite">;
 
-export type IButtonFavorite = {
-  addToFavorites: [
-    IProduct,
-    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
-    string
-  ];
-};
+export type ICardCart = Pick<ICard, "product" | "arrCart">;
 
-export type IButtonDelete = {
-  deleteFromFavorites: [
-    IProduct,
-    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
-    string
-  ];
-};
-
-export type IButtonCart = {
-  arrCart: [
+export type IButton = React.ComponentProps<"button"> & {
+  arrParams: [
     IProduct,
     [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
     string
@@ -59,11 +43,6 @@ export type SearchByCategory = {
   user_context: null;
 };
 
-export type Obj = {
-  id: string;
-  name: string;
-};
-
 type Filters_propriedades = {
   values: Array<Filters_propriedades_values_object>;
 };
@@ -87,13 +66,7 @@ type available_filters_propriedades_values_object = {
   results: number;
 };
 
-// Types Context
-
-export type IDataContext = {
-  categories: Obj[] | null;
-  setCategories: React.Dispatch<React.SetStateAction<Obj[] | null>>;
-  urlProducts: string | null;
-  seturlProducts: React.Dispatch<React.SetStateAction<string | null>>;
-  data: SearchByCategory | null;
-  setData: React.Dispatch<React.SetStateAction<SearchByCategory | null>>;
+export type Obj = {
+  id: string;
+  name: string;
 };
