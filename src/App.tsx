@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Cart from "./Pages/Cart/Cart";
-import Home from "./Pages/Home/Index";
-import Product from "./Pages/Product/Index";
-import Favorite from "./Pages/Favorite/Index";
-import Header from "./Components/Header/Index";
-import SearchProducts from "./Pages/SearchProducts/Index";
-import SubCategory from "./Pages/SubCategory/Index";
-import PrincipalCategory from "./Pages/PrincipalCategory/Index";
+import Cart from "./pages/Cart/Cart";
+import Home from "./pages/Home/Index";
+import Product from "./pages/Product/Index";
+import Favorite from "./pages/Favorite/Index";
+import Header from "./components/Header/Index";
+import SearchProducts from "./pages/SearchProducts/Index";
+import SubCategory from "./pages/SubCategory/Index";
+import PrincipalCategory from "./pages/PrincipalCategory/Index";
 import "./App.css";
 
 function App() {
