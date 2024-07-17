@@ -1,5 +1,5 @@
 import { MdFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
-import { handleFavoriteAction } from "../../Utility_functions/handleFavoriteAction";
+import { handleFavoriteAction } from "../../utilityFunctions/handleFavoriteAction";
 import { IButton } from "../../typesProject/types";
 import * as S from "./Styled";
 

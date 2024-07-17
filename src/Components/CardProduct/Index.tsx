@@ -2,7 +2,7 @@ import * as S from "./Styled";
 import PriceDiscounts from "../PriceDiscounts/Index";
 import { ICardFavorite } from "../../typesProject/types";
 import { Link } from "react-router-dom";
-import { normalizeString } from "../../Utility_functions/normalizeString";
+import { normalizeString } from "../../utilityFunctions/normalizeString";
 import ButtonFavorite from "../ButtonFavorite/Index";
 
 const CardProduct = ({ product, arrFavorite }: ICardFavorite) => {

@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./Styled";
-import NavSidebar from "../../Components/NavSidebar/Index";
-import CardList from "../../Components/CardList/Index";
-import { fetchData } from "../../Utility_functions/fetchData";
+import NavSidebar from "../../components/NavSidebar/Index";
+import CardList from "../../components/CardList/Index";
+import { fetchData } from "../../utilityFunctions/fetchData";
 import { useParams } from "react-router-dom";
 import { SearchByCategory } from "../../typesProject/types";
 

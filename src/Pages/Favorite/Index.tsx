@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Styled";
-import CardFavorite from "../../Components/CardFavorite/Index";
-import { getLocal } from "../../Utility_functions/localstorage_funcs";
+import CardFavorite from "../../components/CardFavorite/Index";
+import { getLocal } from "../../utilityFunctions/localstorage_funcs";
 import { IProduct } from "../../typesProject/types";
 
 const Favorite = () => {

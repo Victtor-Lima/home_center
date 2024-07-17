@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./Styled";
-import CardCart from "../../Components/CardCart/Index";
-import { getLocal } from "../../Utility_functions/localstorage_funcs";
+import CardCart from "../../components/CardCart/Index";
+import { getLocal } from "../../utilityFunctions/localstorage_funcs";
 import { IProduct } from "../../typesProject/types";
 
 function total(cart: IProduct[]) {

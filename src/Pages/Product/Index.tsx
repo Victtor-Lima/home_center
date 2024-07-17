@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./Styled";
-import SpecificProduct from "../../Components/EspecificProduct/Index";
-import { fetchData } from "../../Utility_functions/fetchData";
-import { getLocal } from "../../Utility_functions/localstorage_funcs";
+import SpecificProduct from "../../components/EspecificProduct/Index";
+import { fetchData } from "../../utilityFunctions/fetchData";
+import { getLocal } from "../../utilityFunctions/localstorage_funcs";
 import { IProduct, SearchByCategory } from "../../typesProject/types";
 import { useParams } from "react-router-dom";
 

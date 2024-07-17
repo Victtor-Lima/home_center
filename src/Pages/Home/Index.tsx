@@ -1,5 +1,5 @@
 import * as S from "./Styled";
-import CardHNav from "../../Components/CardHNav/Index";
+import CardHNav from "../../components/CardHNav/Index";
 
 const Home = () => {
   return (
