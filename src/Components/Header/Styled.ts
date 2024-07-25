@@ -2,31 +2,40 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const ContainerHeader = styled.header`
-  content: "";
-  width: 100%;
-  left: 0px;
-  background: #ff7a44;
+  display: grid;
+  justify-content: center;
+  width: 100vw;
+  height: 100px;
+  background: #ffffff;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ff9e2d;
 `;
 
 export const ContainerCompenentsHeader = styled.div`
   display: grid;
-  grid-template-columns: auto 3fr auto auto;
-  justify-items: center;
-  gap: 20px;
+  grid-template-columns:
+    minmax(max-content, 220px)
+    minmax(max-content, 1020px)
+    repeat(3, max-content);
   align-items: center;
-  max-width: 1200px;
-  height: 65px;
-  background: #ff7a44;
-  padding: 0 15px;
-  margin: 0 auto;
+  gap: 20px;
+  max-width: 1600px;
 `;
 
-type IntImgHeader = {
-  size?: number;
-};
-
-export const ImgHeader = styled.img<IntImgHeader>`
+export const ImgHeader = styled.img`
   display: grid;
   align-items: center;
-  width: ${(props) => (props.size ? `${props.size}px` : "")};
+`;
+
+export const LinkPages = styled(Link)`
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.375rem;
+  color: #ff9e2d;
+  padding: 10px;
+
+  &:last-child {
+    color: #ff5a5a;
+  }
 `;

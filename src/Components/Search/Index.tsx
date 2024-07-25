@@ -20,7 +20,9 @@ const Search = () => {
         type="text"
         onChange={({ target }) => setInputValue(target.value)}
       />
-      <S.ButtonSearch onClick={(event) => search(event)}>Buscar</S.ButtonSearch>
+      <S.ButtonSearch onClick={(event) => search(event)}>
+        <S.Lupa />
+      </S.ButtonSearch>
     </S.FormSearch>
   );
 };
