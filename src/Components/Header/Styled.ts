@@ -18,7 +18,7 @@ export const ContainerCompenentsHeader = styled.div`
     minmax(max-content, 1020px)
     repeat(3, max-content);
   align-items: center;
-  gap: 20px;
+  gap: 0px 20px;
   max-width: 1600px;
 `;
 

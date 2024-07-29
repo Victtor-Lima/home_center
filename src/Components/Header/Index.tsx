@@ -1,6 +1,7 @@
 import * as S from "./Styled";
 import Search from "../Search/Index";
 import logo from "../../../public/logo.svg";
+import Navbar from "../Navbar/Index";
 
 const Header = () => {
   return (
@@ -13,6 +14,7 @@ const Header = () => {
         <S.LinkPages to="/favorite">Favoritos</S.LinkPages>
         <S.LinkPages to="/cart">Carrinho</S.LinkPages>
         <S.LinkPages to="#">Login</S.LinkPages>
+        <Navbar />
       </S.ContainerCompenentsHeader>
     </S.ContainerHeader>
   );
