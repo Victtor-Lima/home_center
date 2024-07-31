@@ -6,7 +6,7 @@ export const ContainerHeader = styled.header`
   justify-content: center;
   width: 100%;
   height: 100px;
-  background: #ffffff;
+  background: transparent;
   margin-bottom: 15px;
   border-bottom: 1px solid #ff9e2d;
 `;
@@ -33,6 +33,7 @@ export const LinkPages = styled(Link)`
   text-align: center;
   font-size: 1.375rem;
   color: #ff9e2d;
+
   padding: 10px;
 
   &:nth-child(5) {

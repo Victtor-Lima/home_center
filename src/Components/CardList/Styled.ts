@@ -8,7 +8,7 @@ export const ContainerCardList = styled.section`
 export const ListCards = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 15px;
+  gap: 20px;
 `;
 export const OriginalPrice = styled.span`
   font-family: Arial, Helvetica, sans-serif;

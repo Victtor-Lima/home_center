@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerPrincipalCategory = styled.section`
   display: grid;
-  grid-template-columns: 300px auto;
+  grid-template-columns: minmax(300px, auto) auto;
   margin-top: 50px;
 
   @media (max-width: 1070px) {
