@@ -8,6 +8,7 @@ import SearchProducts from "./pages/SearchProducts/Index";
 import SubCategory from "./pages/SubCategory/Index";
 import PrincipalCategory from "./pages/PrincipalCategory/Index";
 import "./App.css";
+import Footer from "./components/Footer/Index";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path={`/produto/:id`} element={<Product />} />
           </Routes>
         </main>
+        <Footer />
       </BrowserRouter>
     </>
   );

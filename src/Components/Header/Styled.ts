@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ContainerHeader = styled.header`
   display: grid;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: 100px;
   background: #ffffff;
   margin-bottom: 15px;
@@ -35,7 +35,7 @@ export const LinkPages = styled(Link)`
   color: #ff9e2d;
   padding: 10px;
 
-  &:last-child {
+  &:nth-child(5) {
     color: #ff5a5a;
   }
 `;
