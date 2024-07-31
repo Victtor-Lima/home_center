@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ContainerCardProduct = styled.div`
-  display: grid;
   max-width: 290px;
   height: 100%;
   background: #fff;
   padding: 15px;
-  border-radius: 6px;
+  border-radius: 18px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
   position: relative;
 
@@ -19,13 +19,15 @@ export const ContainerCardProduct = styled.div`
   img {
     justify-self: center;
     width: 100%;
+    max-height: 270px;
     border-radius: 10px;
     margin-bottom: 20px;
   }
 
   h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.8rem;
+    align-self: self-start;
+    font-family: "Nunito", sans-serif;
+    font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0.04rem;
     margin-bottom: 20px;
@@ -43,10 +45,17 @@ export const ContainerCardProduct = styled.div`
   }
 `;
 
+export const LinkProduct = styled(Link)`
+  display: grid;
+  grid-template-rows: minmax(max-content, 240px) max-content auto max-content;
+  align-items: end;
+  height: 100%;
+`;
+
 export const OriginalPrice = styled.span`
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Nunito", sans-serif;
   text-decoration: line-through;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin-bottom: 5px;
 `;
 
@@ -59,8 +68,8 @@ export const ContainerPriceFinal = styled.div`
 `;
 
 export const PriceFinal = styled.span`
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #2e2e2e;
 `;

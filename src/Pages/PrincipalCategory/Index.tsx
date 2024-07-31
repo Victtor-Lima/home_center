@@ -11,7 +11,12 @@ export const StyleCategoryProducts: React.CSSProperties = {
   gridTemplateColumns: "300px auto",
 };
 
+function bodyColor() {
+  window.document.body.style.backgroundColor = "rgb(232, 232, 232, 38%)";
+}
+
 const GeneralProducts = () => {
+  bodyColor();
   const [data, setData] = React.useState<SearchByCategory | null>(null);
   const { id } = useParams();
 

@@ -12,6 +12,6 @@ export const ButtonFavorite = styled.button`
   outline: none;
   border-radius: 10px;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  bottom: 5px;
+  right: 5px;
 `;

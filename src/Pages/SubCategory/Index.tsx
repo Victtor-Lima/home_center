@@ -26,7 +26,9 @@ const SpecificProducts = () => {
   if (data === null) return "Carregando...";
   return (
     <S.ContainerPrincipalCategory>
-      <NavSidebar data={data} />
+      {data.available_filters.some((item) => item.id === "category") && (
+        <NavSidebar data={data} />
+      )}
       <CardList data={data} />
     </S.ContainerPrincipalCategory>
   );
