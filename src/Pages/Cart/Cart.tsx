@@ -29,14 +29,6 @@ const Cart = () => {
   return (
     <S.ContainerCart>
       <S.CartTitle>Carrinho</S.CartTitle>
-      <S.ContainerHeaderCart>
-        <S.HeaderCartList>
-          <li>Produto</li>
-          <li>Quantidade</li>
-          <li>Preço</li>
-          <li>Total</li>
-        </S.HeaderCartList>
-      </S.ContainerHeaderCart>
       <S.CartListProducts>
         {cart.map((item) => (
           <S.Product key={item.id}>
