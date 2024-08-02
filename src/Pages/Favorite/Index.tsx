@@ -19,11 +19,14 @@ const Favorite = () => {
     <S.ContainerFavorite>
       <S.FavoriteTitle>Favoritos</S.FavoriteTitle>
       {favorite.map((product) => (
-        <CardFavorite
-          key={product.id}
-          product={product}
-          arrFavorite={[favorite, setFavorite]}
-        />
+        <ul key={product.id}>
+          <li>
+            <CardFavorite
+              product={product}
+              arrFavorite={[favorite, setFavorite]}
+            />
+          </li>
+        </ul>
       ))}
     </S.ContainerFavorite>
   );
