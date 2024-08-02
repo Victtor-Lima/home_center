@@ -5,7 +5,7 @@ import { ICardFavorite } from "../../typesProject/types";
 
 const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
   return (
-    <S.ContainerCardFavorite key={product.id}>
+    <S.ContainerCardFavorite>
       <img src={product.thumbnail} alt={product.title} />
       <S.ContainerContent>
         <h1>{product.title}</h1>

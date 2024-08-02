@@ -4,23 +4,32 @@ export const ContainerCardFavorite = styled.div`
   display: grid;
   grid-template-columns: max-content auto;
   gap: 20px;
-  background: #fff;
-  padding: 30px 20px;
-  border-bottom: 1px solid #bebebe85;
+  max-width: 1100px;
+  background: #ffffff;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 
   img {
+    align-self: center;
     width: 160px;
+    border-radius: 20px;
   }
 `;
 
 export const ContainerContent = styled.div`
   display: grid;
-  grid-template-rows: max-content 1fr auto;
+  width: 100%;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  align-items: end;
+  padding: 10px;
 
   h1 {
-    font-family: Arial, Helvetica, sans-serif;
+    align-self: start;
+    grid-column: 1/-1;
+    font-family: "Nunito", sans-serif;
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 25px;
   }
 `;
