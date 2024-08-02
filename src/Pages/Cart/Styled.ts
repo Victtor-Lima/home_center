@@ -6,14 +6,16 @@ export const ContainerCart = styled.section`
   grid-template-columns: 1fr max-content;
   grid-template-rows: max-content max-content;
   align-items: start;
-  gap: 15px;
+  gap: 0 34px;
   height: 100%;
+  margin-bottom: 30px;
 `;
 
 export const CartTitle = styled.h1`
   grid-column: 1/-1;
   font-size: 1.5rem;
   font-weight: 500;
+  color: #ff9e2d;
   margin: 50px 0px 30px 0px;
 `;
 
@@ -41,7 +43,6 @@ export const CartListProducts = styled.ul`
 
 export const Product = styled.li`
   background: #fff;
-  padding: 10px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 `;

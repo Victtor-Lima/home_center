@@ -29,10 +29,7 @@ const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
             <PriceDiscounts product={product} />
           </S.ContainerPriceFinal>
         </div>
-        <ButtonDelete
-          arrParams={[product, arrFavorite, "favorites"]}
-          color="#ff7a44"
-        >
+        <ButtonDelete arrParams={[product, arrFavorite, "favorites"]}>
           Excluir
         </ButtonDelete>
       </S.ContainerContent>
