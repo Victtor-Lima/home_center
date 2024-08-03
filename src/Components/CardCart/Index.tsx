@@ -3,7 +3,7 @@ import { ICardCart } from "../../typesProject/types";
 import ButtonDelete from "../ButtonDelete/Index";
 import {
   addUnit,
-  reduceUnit,
+  removeUnit,
 } from "../../utilityFunctions/quantityManipulation";
 import subtracao from "../../img/subtracao.svg";
 import adicao from "../../img/adicao.svg";
@@ -24,7 +24,7 @@ const CardCart = ({ product, arrCart }: ICardCart) => {
         </S.PriceFinalCart>
         <S.ContainerUnits>
           <S.ButtonControllUnits
-            onClick={() => reduceUnit(product, cart, setCart)}
+            onClick={() => removeUnit(product, cart, setCart)}
           >
             <S.IconControl src={subtracao} alt="" />
           </S.ButtonControllUnits>

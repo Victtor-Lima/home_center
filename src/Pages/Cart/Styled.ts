@@ -50,9 +50,59 @@ export const Product = styled.li`
 export const CartSummary = styled.div`
   grid-area: 3;
   grid-column: 2;
+  display: grid;
+  grid-template-rows: max-content max-content max-content;
+  gap: 30px;
   width: 300px;
-  height: 400px;
+  height: 350px;
   background: #fff;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  font-family: "Nunito", sans-serif;
+
+  h3 {
+    color: #ff9e2d;
+    font-size: 1.5rem;
+    padding: 10px 16px;
+    box-shadow: rgba(255, 158, 45, 0.13) 0px 2px 0px;
+  }
+
+  button {
+    justify-self: center;
+    font-size: 1.125rem;
+    background: #ffa742;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+
+    &:hover {
+      background: #ff9e2d;
+    }
+  }
+`;
+
+export const SummaryList = styled.ul`
+  display: grid;
+  gap: 20px;
+`;
+
+export const SummaryItem = styled.li`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: "Nunito", sans-serif;
+  padding: 0px 16px;
+
+  p {
+    font-size: 1.2rem;
+  }
+  span {
+    font-size: 1.09rem;
+    justify-self: end;
+  }
+
+  &:nth-child(3) {
+    span {
+      color: #22a800;
+    }
+  }
 `;

@@ -16,7 +16,7 @@ export function addUnit(
   setLocal("cart", updateState);
 }
 
-export function reduceUnit(
+export function removeUnit(
   product: IProduct,
   state: IProduct[],
   setState: React.Dispatch<React.SetStateAction<IProduct[]>>
@@ -44,4 +44,21 @@ export function remove(
   const updateState = state.filter((item) => item.id !== product.id);
   setState(updateState);
   setLocal(nameList, updateState);
+}
+
+export function total(cart: IProduct[]) {
+  const priceTotal: string = cart
+    .map((item) => item.price * item.amount)
+    .reduce((acum, value) => acum + value, 0)
+    .toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  return priceTotal;
+}
+
+export function somar(cart: IProduct[]) {
+  return cart
+    .map((item) => item.amount)
+    .reduce((result, value) => result + value, 0);
 }
