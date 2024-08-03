@@ -1,19 +1,9 @@
 import React from "react";
 import * as S from "./Styled";
 import CardCart from "../../components/CardCart/Index";
-import { getLocal } from "../../utilityFunctions/localstorage_funcs";
 import { IProduct } from "../../typesProject/types";
-
-function total(cart: IProduct[]) {
-  const priceTotal: string = cart
-    .map((item) => item.price * item.amount)
-    .reduce((acum, value) => acum + value, 0)
-    .toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-  return priceTotal;
-}
+import { getLocal } from "../../utilityFunctions/localstorage_funcs";
+import { somar, total } from "../../utilityFunctions/quantityManipulation";
 
 const Cart = () => {
   const [cart, setCart] = React.useState<Array<IProduct>>([]);
@@ -38,8 +28,25 @@ const Cart = () => {
       </S.CartListProducts>
       <S.CartSummary>
         <h3>Resumo</h3>
-        <p> Valor Total:</p>
-        <span>{total(cart)}</span>
+        <S.SummaryList>
+          <S.SummaryItem>
+            <p>Quantidade:</p>
+            <span>{somar(cart)}</span>
+          </S.SummaryItem>
+          <S.SummaryItem>
+            <p>Subtotal:</p>
+            <span>{total(cart)}</span>
+          </S.SummaryItem>
+          <S.SummaryItem>
+            <p>Frete:</p>
+            <span>Gratis</span>
+          </S.SummaryItem>
+          <S.SummaryItem>
+            <p>Total:</p>
+            <span>{total(cart)}</span>
+          </S.SummaryItem>
+        </S.SummaryList>
+        <button>Finalizar Perdido</button>
       </S.CartSummary>
     </S.ContainerCart>
   );
