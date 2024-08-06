@@ -7,27 +7,32 @@ import Header from "./components/Header/Index";
 import SearchProducts from "./pages/SearchProducts/Index";
 import SubCategory from "./pages/SubCategory/Index";
 import PrincipalCategory from "./pages/PrincipalCategory/Index";
+import Login from "./pages/Login/Index";
 import "./App.css";
 import Footer from "./components/Footer/Index";
+import { LoginProvider } from "./components/context/LoginContext";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search/:id" element={<SearchProducts />} />
-            <Route path="/c/:category/:id" element={<PrincipalCategory />} />
-            <Route path={`/:subcategory/:id`} element={<SubCategory />} />
-            <Route path={`/favorite`} element={<Favorite />} />
-            <Route path={`/cart`} element={<Cart />} />
-            <Route path={`/produto/:id`} element={<Product />} />
-          </Routes>
-        </main>
-        <Footer />
-      </BrowserRouter>
+      <LoginProvider>
+        <BrowserRouter>
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/search/:id" element={<SearchProducts />} />
+              <Route path="/c/:category/:id" element={<PrincipalCategory />} />
+              <Route path={`/:subcategory/:id`} element={<SubCategory />} />
+              <Route path={`/favorite`} element={<Favorite />} />
+              <Route path={`/cart`} element={<Cart />} />
+              <Route path={`/produto/:id`} element={<Product />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </main>
+          <Footer />
+        </BrowserRouter>
+      </LoginProvider>
     </>
   );
 }
