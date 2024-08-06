@@ -13,7 +13,7 @@ const Header = () => {
         <Search />
         <S.LinkPages to="/favorite">Favoritos</S.LinkPages>
         <S.LinkPages to="/cart">Carrinho</S.LinkPages>
-        <S.LinkPages to="#">Login</S.LinkPages>
+        <S.LinkPages to="/login">Login</S.LinkPages>
         <Navbar />
       </S.ContainerCompenentsHeader>
     </S.ContainerHeader>
