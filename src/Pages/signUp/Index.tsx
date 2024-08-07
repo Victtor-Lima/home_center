@@ -1,12 +1,12 @@
 import React from "react";
 import Form from "../../components/Form/Index";
 
-const Login = () => {
+const SignUp = () => {
   return (
     <section>
-      <Form page="signIn" />
+      <Form page="signUp" />
     </section>
   );
 };
 
-export default Login;
+export default SignUp;
