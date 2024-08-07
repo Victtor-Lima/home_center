@@ -10,7 +10,8 @@ import PrincipalCategory from "./pages/PrincipalCategory/Index";
 import Login from "./pages/Login/Index";
 import "./App.css";
 import Footer from "./components/Footer/Index";
-import { LoginProvider } from "./components/context/LoginContext";
+import { LoginProvider } from "./context/LoginContext";
+import SignUp from "./pages/signUp/Index";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path={`/cart`} element={<Cart />} />
               <Route path={`/produto/:id`} element={<Product />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/login/signup" element={<SignUp />} />
             </Routes>
           </main>
           <Footer />
