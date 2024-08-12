@@ -51,8 +51,6 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, []);
 
-  console.log(loggedUser);
-
   function signIn(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 

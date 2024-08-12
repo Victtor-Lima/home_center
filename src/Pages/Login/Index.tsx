@@ -5,7 +5,6 @@ import { useLogin } from "../../context/LoginContext";
 const Login = () => {
   const { loggedUser } = useLogin();
 
-  console.log(loggedUser);
   return (
     <section>
       {loggedUser ? (
