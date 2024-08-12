@@ -1,18 +1,36 @@
-import React, { createContext } from "react";
-import { Verifications } from "../utilityFunctions/accessFunctions/verifications";
+import React from "react";
+import { createUser } from "../utilityFunctions/accessFunctions/createUser";
+import { useValidateInput } from "../utilityFunctions/hooks/useValidateInput";
+
+export type SignType = {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  onChange: ({ target }: { target: EventTarget & HTMLInputElement }) => void;
+  error: string | null;
+  validate: () => boolean;
+  onBlur: () => boolean;
+};
 
 type LoginTypeContext = {
-  email: string;
-  setEmail: React.Dispatch<React.SetStateAction<string>>;
-  password: string;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
-  confirmPassword: string;
-  setConfirmPassword: React.Dispatch<React.SetStateAction<string>>;
+  loggedUser: User | null;
+  userEmail: SignType;
+  userPassword: SignType;
   signIn: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   signUp: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
-const LoginContext = createContext<LoginTypeContext | null>(null);
+type User = {
+  userName: string;
+  userId: number;
+};
+
+export type UserType = {
+  email: string;
+  password: string;
+  id: number;
+};
+
+const LoginContext = React.createContext<LoginTypeContext | null>(null);
 
 export const useLogin = () => {
   const context = React.useContext(LoginContext);
@@ -21,23 +39,52 @@ export const useLogin = () => {
 };
 
 export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [loggedUser, setLoggedUser] = React.useState<User | null>(null);
+  const userEmail = useValidateInput("email");
+  const userPassword = useValidateInput("password");
+
+  React.useMemo(() => {
+    const islogged = localStorage.getItem("user");
+    if (islogged) {
+      const user: User = JSON.parse(islogged);
+      setLoggedUser(user);
+    }
+  }, []);
+
+  console.log(loggedUser);
 
   function signIn(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
-    if (loginDataVerification(email, password)) {
-      login(email);
+    if (userEmail.validate() && userPassword.validate()) {
+      login(userEmail.value, userPassword.value);
+    }
+  }
+
+  function login(email: string, password: string) {
+    const local = localStorage.getItem("registrations");
+    const registrations: Array<UserType> = local ? JSON.parse(local) : false;
+    const isUserValid = registrations
+      ? registrations.find(
+          (user) => user.email === email && user.password === password
+        )
+      : false;
+
+    if (registrations && isUserValid) {
+      const user: User = { userName: email, userId: isUserValid.id };
+      localStorage.setItem("user", JSON.stringify(user));
+      setLoggedUser(user);
+    } else {
+      window.location.href = "/login/signup";
+      console.log(registrations);
     }
   }
 
   function signUp(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
-    if (loginDataVerification(email, password, confirmPassword)) {
-      createUser(email, password);
+    if (userEmail.validate() && userPassword.validate()) {
+      createUser(userEmail.value, userPassword.value);
       window.location.href = "/login";
     }
   }
@@ -45,12 +92,9 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <LoginContext.Provider
       value={{
-        email,
-        setEmail,
-        password,
-        setPassword,
-        confirmPassword,
-        setConfirmPassword,
+        loggedUser,
+        userEmail,
+        userPassword,
         signIn,
         signUp,
       }}
@@ -59,68 +103,3 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
     </LoginContext.Provider>
   );
 };
-
-function loginDataVerification(
-  email: string,
-  password: string,
-  confirmPassword?: string
-) {
-  const isEmailValid = new Verifications().isEmailValid(email);
-  const isPasswordValid = new Verifications().isPasswordValid(password);
-  const isConfirmPassword = confirmPassword
-    ? new Verifications().passwordConfirmation(password, confirmPassword)
-    : false;
-
-  if (!isEmailValid) {
-    alert("Email incorreto");
-    return false;
-  }
-  if (!isPasswordValid) {
-    alert("Senha incorreta");
-    return false;
-  }
-  if (confirmPassword && !isConfirmPassword) {
-    alert("Confirmação de senha incorreta");
-    return false;
-  }
-  console.log(isEmailValid);
-  console.log(isPasswordValid);
-
-  return true;
-}
-
-type UserType = {
-  email: string;
-  password: string;
-};
-
-function login(email: string) {
-  const local = localStorage.getItem("registrations");
-  const registrations: Array<UserType> = local ? JSON.parse(local) : false;
-  const isUserValid = registrations
-    ? registrations.some((user) => user.email === email)
-    : false;
-
-  if (registrations && isUserValid) {
-    alert("logado");
-  } else {
-    window.location.href = "/login/signup";
-    console.log(registrations);
-  }
-}
-
-function createUser(email: string, password: string) {
-  const user = { email, password };
-  const registrations = localStorage.getItem("registrations");
-
-  if (!registrations) {
-    localStorage.setItem("registrations", JSON.stringify([user]));
-  } else if (registrations) {
-    const registrationsUp = JSON.parse(registrations);
-
-    localStorage.setItem(
-      "registrations",
-      JSON.stringify([...registrationsUp, user])
-    );
-  }
-}
