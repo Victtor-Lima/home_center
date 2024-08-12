@@ -1,5 +1,3 @@
-import React from "react";
-
 type InputType = {
   label: string;
   name: string;

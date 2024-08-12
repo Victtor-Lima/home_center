@@ -21,16 +21,16 @@ const types: typesProperties = {
   },
 };
 
-export const useValidateInput = (type?: string) => {
+export const useValidateInput = (type: string) => {
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
 
   function validate(value: string) {
     if (type === undefined) return true;
     if (value.length === 0) {
-      setError("Preencha um valor");
+      setError("Preencha um valor.");
       return false;
-    } else if (types[type] && !types[type].regex.test(value)) {
+    } else if (!error && types[type] && !types[type].regex.test(value)) {
       setError(types[type].message);
       return false;
     } else {
@@ -40,6 +40,7 @@ export const useValidateInput = (type?: string) => {
   }
 
   function onChange({ target }: { target: EventTarget & HTMLInputElement }) {
+    console.log(error);
     if (error) validate(target.value);
     setValue(target.value);
   }
