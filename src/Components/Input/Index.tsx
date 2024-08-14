@@ -1,3 +1,5 @@
+import * as S from "./Styled";
+
 type InputType = {
   label: string;
   name: string;
@@ -18,9 +20,9 @@ const Input = ({
   error,
 }: InputType) => {
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
-      <input
+    <S.Container>
+      <S.Label htmlFor={name}>{label}</S.Label>
+      <S.Input
         type={type}
         id={name}
         name={name}
@@ -28,8 +30,8 @@ const Input = ({
         onChange={onChange}
         onBlur={onBlur}
       />
-      {error && <p>{error}</p>}
-    </div>
+      {error && <S.SpanError>{error}</S.SpanError>}
+    </S.Container>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import * as S from "./Styled";
 import Form from "../../components/Form/Index";
 import { useLogin } from "../../context/LoginContext";
 
@@ -6,7 +7,7 @@ const Login = () => {
   const { loggedUser } = useLogin();
 
   return (
-    <section>
+    <S.LoginContainer>
       {loggedUser ? (
         <>
           <p>USUÁRIO LOGADO</p>
@@ -15,7 +16,7 @@ const Login = () => {
       ) : (
         <Form page="signIn" />
       )}
-    </section>
+    </S.LoginContainer>
   );
 };
 
