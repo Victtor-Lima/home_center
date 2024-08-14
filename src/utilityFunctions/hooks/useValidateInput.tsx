@@ -11,13 +11,13 @@ const types: typesProperties = {
   email: {
     regex:
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    message: "Preencha um email válido. Ex.: usuario@gmail.com",
+    message: "Email inválido. Ex.: usuario@gmail.com",
   },
   password: {
     regex:
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$/,
     message:
-      "Senha deve ter, no mínimo, 8 caracteres, letra maiúscula, número e símbolo especial",
+      "Deve ter 8 caracteres, letra maiúscula, número e símbolo especial.",
   },
 };
 
