@@ -12,6 +12,7 @@ import "./App.css";
 import Footer from "./components/Footer/Index";
 import { LoginProvider } from "./context/LoginContext";
 import SignUp from "./pages/signUp/Index";
+import ProtectedRouter from "./utilityFunctions/hooks/ProtectedRouter";
 
 function App() {
   return (
@@ -26,7 +27,14 @@ function App() {
               <Route path="/c/:category/:id" element={<PrincipalCategory />} />
               <Route path={`/:subcategory/:id`} element={<SubCategory />} />
               <Route path={`/favorite`} element={<Favorite />} />
-              <Route path={`/cart`} element={<Cart />} />
+              <Route
+                path={`/cart`}
+                element={
+                  <ProtectedRouter>
+                    <Cart />
+                  </ProtectedRouter>
+                }
+              />
               <Route path={`/produto/:id`} element={<Product />} />
               <Route path="/login" element={<Login />} />
               <Route path="/login/signup" element={<SignUp />} />
