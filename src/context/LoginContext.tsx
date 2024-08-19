@@ -1,6 +1,7 @@
 import React from "react";
 import { createUser } from "../utilityFunctions/accessFunctions/createUser";
 import { useValidateInput } from "../utilityFunctions/hooks/useValidateInput";
+import { useNavigate } from "react-router-dom";
 
 export type SignType = {
   value: string;
@@ -13,18 +14,22 @@ export type SignType = {
 
 type LoginTypeContext = {
   loggedUser: User | null;
+  userName: SignType;
   userEmail: SignType;
   userPassword: SignType;
   signIn: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   signUp: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  logout: () => void;
 };
 
 type User = {
   userName: string;
+  userEmail: string;
   userId: number;
 };
 
 export type UserType = {
+  name: string;
   email: string;
   password: string;
   id: number;
@@ -40,11 +45,15 @@ export const useLogin = () => {
 
 export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   const [loggedUser, setLoggedUser] = React.useState<User | null>(null);
+  const userName = useValidateInput("username");
   const userEmail = useValidateInput("email");
   const userPassword = useValidateInput("password");
 
+  const navigate = useNavigate();
+
   React.useMemo(() => {
     const islogged = localStorage.getItem("user");
+    console.log(islogged);
     if (islogged) {
       const user: User = JSON.parse(islogged);
       setLoggedUser(user);
@@ -69,32 +78,47 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
       : false;
 
     if (registrations && isUserValid) {
-      const user: User = { userName: email, userId: isUserValid.id };
+      const user: User = {
+        userName: isUserValid.name,
+        userEmail: email,
+        userId: isUserValid.id,
+      };
       localStorage.setItem("user", JSON.stringify(user));
       setLoggedUser(user);
     } else {
-      window.location.href = "/login/signup";
-      console.log(registrations);
+      navigate("/login/signup");
     }
   }
 
   function signUp(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
-    if (userEmail.validate() && userPassword.validate()) {
-      createUser(userEmail.value, userPassword.value);
-      window.location.href = "/login";
+    if (
+      userName.validate() &&
+      userEmail.validate() &&
+      userPassword.validate()
+    ) {
+      createUser(userName.value, userEmail.value, userPassword.value);
+      navigate("/login");
     }
+  }
+
+  function logout() {
+    localStorage.removeItem("user");
+    setLoggedUser(null);
+    navigate("/");
   }
 
   return (
     <LoginContext.Provider
       value={{
         loggedUser,
+        userName,
         userEmail,
         userPassword,
         signIn,
         signUp,
+        logout,
       }}
     >
       {children}

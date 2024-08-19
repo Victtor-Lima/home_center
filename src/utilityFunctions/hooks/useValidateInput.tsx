@@ -8,6 +8,11 @@ type typesProperties = {
 };
 
 const types: typesProperties = {
+  username: {
+    regex: /[a-z][a-zA-Z0-9]{0,9}/,
+    message:
+      "Nome inválido! Deve iniciar com letra e ter, no máximo, 9 caracteres.",
+  },
   email: {
     regex:
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -40,7 +45,6 @@ export const useValidateInput = (type: string) => {
   }
 
   function onChange({ target }: { target: EventTarget & HTMLInputElement }) {
-    console.log(error);
     if (error) validate(target.value);
     setValue(target.value);
   }
