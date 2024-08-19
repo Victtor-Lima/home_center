@@ -18,30 +18,30 @@ function App() {
   return (
     <>
       <LoginProvider>
-        <BrowserRouter>
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/search/:id" element={<SearchProducts />} />
-              <Route path="/c/:category/:id" element={<PrincipalCategory />} />
-              <Route path={`/:subcategory/:id`} element={<SubCategory />} />
-              <Route path={`/favorite`} element={<Favorite />} />
-              <Route
-                path={`/cart`}
-                element={
-                  <ProtectedRouter>
-                    <Cart />
-                  </ProtectedRouter>
-                }
-              />
-              <Route path={`/produto/:id`} element={<Product />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/login/signup" element={<SignUp />} />
-            </Routes>
-          </main>
-          <Footer />
-        </BrowserRouter>
+        {/* <BrowserRouter> */}
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search/:id" element={<SearchProducts />} />
+            <Route path="/c/:category/:id" element={<PrincipalCategory />} />
+            <Route path={`/:subcategory/:id`} element={<SubCategory />} />
+            <Route path={`/favorite`} element={<Favorite />} />
+            <Route
+              path={`/cart`}
+              element={
+                <ProtectedRouter>
+                  <Cart />
+                </ProtectedRouter>
+              }
+            />
+            <Route path={`/produto/:id`} element={<Product />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/login/signup" element={<SignUp />} />
+          </Routes>
+        </main>
+        <Footer />
+        {/* </BrowserRouter> */}
       </LoginProvider>
     </>
   );

@@ -1,6 +1,6 @@
 import { UserType } from "../../context/LoginContext";
 
-export function createUser(email: string, password: string) {
+export function createUser(name: string, email: string, password: string) {
   const local = localStorage.getItem("registrations");
   const registrations: Array<UserType> = local ? JSON.parse(local) : false;
   const isUserValid = registrations
@@ -13,7 +13,7 @@ export function createUser(email: string, password: string) {
   }
 
   const id = (Math.random() * (2000 - 1) + 1).toFixed();
-  const user = { email, password, id };
+  const user = { name, email, password, id };
 
   if (!registrations) {
     localStorage.setItem("registrations", JSON.stringify([user]));

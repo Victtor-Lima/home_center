@@ -1,15 +1,13 @@
-import React from "react";
 import * as S from "./Styled";
 import { useLogin } from "../../context/LoginContext";
 import Input from "../Input/Index";
-import { Link } from "react-router-dom";
 
 type PageType = {
   page: "signIn" | "signUp";
 };
 
 const Form = ({ page }: PageType) => {
-  const { signIn, signUp, userEmail, userPassword } = useLogin();
+  const { signIn, signUp, userName, userEmail, userPassword } = useLogin();
 
   return (
     <>
@@ -17,11 +15,14 @@ const Form = ({ page }: PageType) => {
         {page === "signIn" ? (
           <S.Title>Acesse e compre TudOline</S.Title>
         ) : (
-          <S.Title>Cadastre-se e compre TudOline</S.Title>
+          <>
+            <S.Title>Cadastre-se e compre TudOline</S.Title>
+            <Input label="Usuário" name="username" type="text" {...userName} />
+          </>
         )}
         <Input label="Email" name="email" type="email" {...userEmail} />
         <Input
-          label="Password"
+          label="Senha"
           name="password"
           type="password"
           {...userPassword}
