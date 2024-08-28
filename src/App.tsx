@@ -26,7 +26,14 @@ function App() {
             <Route path="/search/:id" element={<SearchProducts />} />
             <Route path="/c/:category/:id" element={<PrincipalCategory />} />
             <Route path={`/:subcategory/:id`} element={<SubCategory />} />
-            <Route path={`/favorite`} element={<Favorite />} />
+            <Route
+              path={`/favorite`}
+              element={
+                <ProtectedRouter>
+                  <Favorite />
+                </ProtectedRouter>
+              }
+            />
             <Route
               path={`/cart`}
               element={

@@ -17,10 +17,10 @@ const Header = () => {
         <S.LinkPages to="/favorite">Favoritos</S.LinkPages>
         <S.LinkPages to="/cart">Carrinho</S.LinkPages>
         {loggedUser ? (
-          <div>
-            <p>{loggedUser.userName}</p>
-            <button onClick={() => logout()}>Sair</button>
-          </div>
+          <S.teste>
+            <S.testeP>{loggedUser.userName}</S.testeP>
+            <S.Logout onClick={() => logout()}>Sair</S.Logout>
+          </S.teste>
         ) : (
           <S.LinkPages to="/login">Login</S.LinkPages>
         )}

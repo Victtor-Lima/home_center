@@ -4,7 +4,7 @@ import { ICardFavorite } from "../../typesProject/types";
 import { normalizeString } from "../../utilityFunctions/normalizeString";
 import ButtonFavorite from "../ButtonFavorite/Index";
 
-const CardProduct = ({ product, arrFavorite }: ICardFavorite) => {
+const CardProduct = ({ product }: ICardFavorite) => {
   return (
     <S.ContainerCardProduct key={product.id}>
       <S.LinkProduct to={`/produto/${normalizeString(product.title)}`}>
@@ -28,7 +28,7 @@ const CardProduct = ({ product, arrFavorite }: ICardFavorite) => {
           <PriceDiscounts product={product} />
         </S.ContainerPriceFinal>
       </S.LinkProduct>
-      <ButtonFavorite arrParams={[product, arrFavorite, "favorites"]} />
+      <ButtonFavorite product={product} />
     </S.ContainerCardProduct>
   );
 };

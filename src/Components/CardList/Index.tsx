@@ -5,14 +5,14 @@ import { getLocal } from "../../utilityFunctions/localstorage_funcs";
 import CardProduct from "../CardProduct/Index";
 
 const CardList = ({ data }: { data: SearchByCategory }) => {
-  const [favorite, setFavorite] = React.useState<IProduct[]>([]);
+  // const [favorite, setFavorite] = React.useState<IProduct[]>([]);
 
-  React.useEffect(() => {
-    const favoriteLocal: IProduct[] = getLocal("favorites");
-    if (favoriteLocal) {
-      setFavorite(favoriteLocal);
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   const favoriteLocal: IProduct[] = getLocal("favorites");
+  //   if (favoriteLocal) {
+  //     setFavorite(favoriteLocal);
+  //   }
+  // }, []);
 
   return (
     <S.ContainerCardList>
@@ -21,7 +21,7 @@ const CardList = ({ data }: { data: SearchByCategory }) => {
           <li key={product.id}>
             <CardProduct
               product={product}
-              arrFavorite={[favorite, setFavorite]}
+              // arrFavorite={[favorite, setFavorite]}
             />
           </li>
         ))}

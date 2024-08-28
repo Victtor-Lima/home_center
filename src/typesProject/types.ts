@@ -1,5 +1,6 @@
 // TYPES CARD
 import React from "react";
+import { User } from "../context/LoginContext";
 
 export type ICard = {
   product: IProduct;
@@ -7,16 +8,18 @@ export type ICard = {
   arrCart: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
 };
 
-export type ICardFavorite = Pick<ICard, "product" | "arrFavorite">;
+export type ICardFavorite = Pick<ICard, "product">;
 
 export type ICardCart = Pick<ICard, "product" | "arrCart">;
 
 export type IButton = React.ComponentProps<"button"> & {
-  arrParams: [
-    IProduct,
-    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
-    string
+  user: User | null;
+  product: IProduct;
+  arrState: [
+    IProduct[] | null,
+    React.Dispatch<React.SetStateAction<IProduct[] | null>>
   ];
+  nameList: "favorite" | "cart";
 };
 
 // Types data
