@@ -1,30 +1,18 @@
 import React from "react";
 import * as S from "./Styled";
 import CardFavorite from "../../components/CardFavorite/Index";
-import { getLocal } from "../../utilityFunctions/localstorage_funcs";
-import { IProduct } from "../../typesProject/types";
+import { useLogin } from "../../context/LoginContext";
 
 const Favorite = () => {
-  const [favorite, setFavorite] = React.useState<Array<IProduct>>([]);
-
-  React.useEffect(() => {
-    const favoritesLocal = getLocal("favorites");
-
-    if (favoritesLocal) {
-      setFavorite(favoritesLocal);
-    }
-  }, []);
+  const { favorite } = useLogin();
 
   return (
     <S.ContainerFavorite>
       <S.FavoriteTitle>Favoritos</S.FavoriteTitle>
-      {favorite.map((product) => (
+      {favorite?.map((product) => (
         <ul key={product.id}>
           <li>
-            <CardFavorite
-              product={product}
-              arrFavorite={[favorite, setFavorite]}
-            />
+            <CardFavorite product={product} />
           </li>
         </ul>
       ))}

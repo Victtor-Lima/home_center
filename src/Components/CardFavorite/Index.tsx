@@ -2,8 +2,13 @@ import * as S from "./Styled";
 import ButtonDelete from "../ButtonDelete/Index";
 import PriceDiscounts from "../PriceDiscounts/Index";
 import { ICardFavorite } from "../../typesProject/types";
+import { useLogin } from "../../context/LoginContext";
 
-const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
+const CardFavorite = ({ product }: ICardFavorite) => {
+  const { loggedUser, favorite, setFavorite } = useLogin();
+
+  console.log(favorite);
+
   return (
     <S.ContainerCardFavorite>
       <img src={product.thumbnail} alt={product.title} />
@@ -29,7 +34,12 @@ const CardFavorite = ({ product, arrFavorite }: ICardFavorite) => {
             <PriceDiscounts product={product} />
           </S.ContainerPriceFinal>
         </div>
-        <ButtonDelete arrParams={[product, arrFavorite, "favorites"]}>
+        <ButtonDelete
+          user={loggedUser}
+          product={product}
+          arrState={[favorite, setFavorite]}
+          nameList="favorite"
+        >
           Excluir
         </ButtonDelete>
       </S.ContainerContent>

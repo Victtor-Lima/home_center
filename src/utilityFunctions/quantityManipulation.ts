@@ -1,5 +1,6 @@
-import { setLocal } from "./localstorage_funcs";
+import { getLocal, setLocal } from "./localstorage_funcs";
 import { IProduct } from "../typesProject/types";
+import { updateRegistrations, User, UserType } from "../context/LoginContext";
 
 export function addUnit(
   product: IProduct,
@@ -32,18 +33,28 @@ export function removeUnit(
 }
 
 export function remove(
-  arrDelete: [
-    IProduct,
-    [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>],
-    string
-  ]
+  user: User,
+  product: IProduct,
+  arrState: [
+    IProduct[],
+    React.Dispatch<React.SetStateAction<IProduct[] | null>>
+  ],
+  nameList: "favorite" | "cart"
 ) {
-  const [product, arrState, nameList] = arrDelete;
   const [state, setState] = arrState;
+  const registrations: Array<UserType> = getLocal("registrations");
+  const isUserValid = registrations.find((register) => {
+    return register.id === user.userId;
+  });
 
-  const updateState = state.filter((item) => item.id !== product.id);
-  setState(updateState);
-  setLocal(nameList, updateState);
+  if (isUserValid) {
+    const updateState = state.filter((item) => item.id !== product.id);
+    setState(updateState);
+
+    isUserValid[nameList] = updateState;
+    const newRegistrations = updateRegistrations(isUserValid, registrations);
+    setLocal("registrations", newRegistrations);
+  }
 }
 
 export function total(cart: IProduct[]) {

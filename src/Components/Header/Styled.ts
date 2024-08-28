@@ -15,7 +15,7 @@ export const ContainerCompenentsHeader = styled.div`
   display: grid;
   grid-template-columns:
     minmax(max-content, 220px)
-    minmax(max-content, 1020px)
+    minmax(max-content, 900px)
     repeat(3, max-content);
   align-items: center;
   gap: 0px 20px;
@@ -39,4 +39,26 @@ export const LinkPages = styled(Link)`
   &:nth-child(5) {
     color: #ff5a5a;
   }
+`;
+
+export const teste = styled.div`
+  display: flex;
+  gap: 8px;
+  font-family: "Nunito", sans-serif;
+`;
+
+export const testeP = styled.p`
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.375rem;
+  color: #ff5a5a;
+`;
+
+export const Logout = styled.button`
+  display: grid;
+  align-items: center;
+  align-self: center;
+  font-family: inherit;
+  border: none;
+  border-radius: 10px;
 `;
