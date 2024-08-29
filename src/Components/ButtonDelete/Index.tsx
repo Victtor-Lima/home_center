@@ -4,21 +4,20 @@ import { IButton } from "../../typesProject/types";
 import { useLogin } from "../../context/LoginContext";
 
 const ButtonDelete = ({
-  user,
   product,
   arrState,
   nameList,
   children,
   ...props
 }: IButton) => {
-  function handleRemove() {
-    console.log("teste");
-    const [favorite, setFavorite] = arrState;
+  const { loggedUser } = useLogin();
 
-    if (user && favorite) {
-      remove(user, product, [favorite, setFavorite], "favorite");
+  function handleRemove() {
+    const [state, setState] = arrState;
+
+    if (loggedUser && state) {
+      remove(loggedUser, product, [state, setState], nameList);
     }
-    console.log(favorite);
   }
 
   return (

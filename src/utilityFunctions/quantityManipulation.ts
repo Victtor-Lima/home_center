@@ -3,33 +3,55 @@ import { IProduct } from "../typesProject/types";
 import { updateRegistrations, User, UserType } from "../context/LoginContext";
 
 export function addUnit(
+  user: User | null,
   product: IProduct,
   state: IProduct[],
-  setState: React.Dispatch<React.SetStateAction<IProduct[]>>
+  setState: React.Dispatch<React.SetStateAction<IProduct[] | null>>
 ) {
-  const updateState = state.map((item) => {
-    if (item.id === product.id) {
-      item.amount += 1;
-    }
-    return item;
+  const registrations: Array<UserType> = getLocal("registrations");
+  const isUserValid = registrations.find((register) => {
+    return register.id === user?.userId;
   });
-  setState(updateState);
-  setLocal("cart", updateState);
+
+  if (isUserValid) {
+    const updateState = state.map((item) => {
+      if (item.id === product.id) {
+        item.amount += 1;
+      }
+      return item;
+    });
+    setState(updateState);
+
+    isUserValid.cart = updateState;
+    const newRegistrations = updateRegistrations(isUserValid, registrations);
+    setLocal("registrations", newRegistrations);
+  }
 }
 
 export function removeUnit(
+  user: User | null,
   product: IProduct,
   state: IProduct[],
-  setState: React.Dispatch<React.SetStateAction<IProduct[]>>
+  setState: React.Dispatch<React.SetStateAction<IProduct[] | null>>
 ) {
-  const updateState = state.map((item) => {
-    if (item.id === product.id && item.amount >= 2) {
-      item.amount -= 1;
-    }
-    return item;
+  const registrations: Array<UserType> = getLocal("registrations");
+  const isUserValid = registrations.find((register) => {
+    return register.id === user?.userId;
   });
-  setState(updateState);
-  setLocal("cart", updateState);
+
+  if (isUserValid) {
+    const updateState = state.map((item) => {
+      if (item.id === product.id && item.amount >= 2) {
+        item.amount -= 1;
+      }
+      return item;
+    });
+    setState(updateState);
+
+    isUserValid.cart = updateState;
+    const newRegistrations = updateRegistrations(isUserValid, registrations);
+    setLocal("registrations", newRegistrations);
+  }
 }
 
 export function remove(

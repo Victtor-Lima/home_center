@@ -1,12 +1,11 @@
 import * as S from "./Styled";
 import { IButton } from "../../typesProject/types";
-import { addToListLocal } from "../../utilityFunctions/addToListLocal";
+import { useLogin } from "../../context/LoginContext";
 
-const ButtonCart = ({ arrParams, children }: IButton) => {
+const ButtonCart = ({ product, nameList, children }: IButton) => {
+  const { cartProduct } = useLogin();
   return (
-    <S.ButtonCart onClick={() => addToListLocal(arrParams)}>
-      {children}
-    </S.ButtonCart>
+    <S.ButtonCart onClick={() => cartProduct(product)}>{children}</S.ButtonCart>
   );
 };
 

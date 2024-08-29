@@ -4,25 +4,18 @@ import CardCart from "../../components/CardCart/Index";
 import { IProduct } from "../../typesProject/types";
 import { getLocal } from "../../utilityFunctions/localstorage_funcs";
 import { somar, total } from "../../utilityFunctions/quantityManipulation";
+import { useLogin } from "../../context/LoginContext";
 
 const Cart = () => {
-  const [cart, setCart] = React.useState<Array<IProduct>>([]);
-
-  React.useEffect(() => {
-    const cartLocal = getLocal("cart");
-
-    if (cartLocal) {
-      setCart(cartLocal);
-    }
-  }, []);
+  const { cart, setCart } = useLogin();
 
   return (
     <S.ContainerCart>
       <S.CartTitle>Carrinho</S.CartTitle>
       <S.CartListProducts>
-        {cart.map((item) => (
+        {cart?.map((item) => (
           <S.Product key={item.id}>
-            <CardCart product={item} arrCart={[cart, setCart]} />
+            <CardCart product={item} />
           </S.Product>
         ))}
       </S.CartListProducts>
@@ -31,11 +24,11 @@ const Cart = () => {
         <S.SummaryList>
           <S.SummaryItem>
             <p>Quantidade:</p>
-            <span>{somar(cart)}</span>
+            <span>{cart ? somar(cart) : 0}</span>
           </S.SummaryItem>
           <S.SummaryItem>
             <p>Subtotal:</p>
-            <span>{total(cart)}</span>
+            <span>{cart ? total(cart) : 0}</span>
           </S.SummaryItem>
           <S.SummaryItem>
             <p>Frete:</p>
@@ -43,7 +36,7 @@ const Cart = () => {
           </S.SummaryItem>
           <S.SummaryItem>
             <p>Total:</p>
-            <span>{total(cart)}</span>
+            <span>{cart ? total(cart) : 0}</span>
           </S.SummaryItem>
         </S.SummaryList>
         <button>Finalizar Perdido</button>

@@ -1,5 +1,5 @@
 import * as S from "./Styled";
-import { ICardCart } from "../../typesProject/types";
+import { ICard } from "../../typesProject/types";
 import ButtonDelete from "../ButtonDelete/Index";
 import {
   addUnit,
@@ -7,10 +7,12 @@ import {
 } from "../../utilityFunctions/quantityManipulation";
 import subtracao from "../../img/subtracao.svg";
 import adicao from "../../img/adicao.svg";
+import { useLogin } from "../../context/LoginContext";
 
-const CardCart = ({ product, arrCart }: ICardCart) => {
-  const [cart, setCart] = arrCart;
+const CardCart = ({ product }: ICard) => {
+  const { loggedUser, cart, setCart } = useLogin();
 
+  if (cart === null) return "carregando...";
   return (
     <S.ContainerCardCart>
       <S.ImgProduct src={product.thumbnail} alt={product.title} />
@@ -24,18 +26,22 @@ const CardCart = ({ product, arrCart }: ICardCart) => {
         </S.PriceFinalCart>
         <S.ContainerUnits>
           <S.ButtonControllUnits
-            onClick={() => removeUnit(product, cart, setCart)}
+            onClick={() => removeUnit(loggedUser, product, cart, setCart)}
           >
             <S.IconControl src={subtracao} alt="" />
           </S.ButtonControllUnits>
           <S.Units>{product.amount}</S.Units>
           <S.ButtonControllUnits
-            onClick={() => addUnit(product, cart, setCart)}
+            onClick={() => addUnit(loggedUser, product, cart, setCart)}
           >
             <S.IconControl src={adicao} alt="" />
           </S.ButtonControllUnits>
         </S.ContainerUnits>
-        <ButtonDelete arrParams={[product, [cart, setCart], "cart"]}>
+        <ButtonDelete
+          product={product}
+          arrState={[cart, setCart]}
+          nameList="cart"
+        >
           Remover
         </ButtonDelete>
       </S.ContainerContent>
