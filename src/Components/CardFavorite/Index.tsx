@@ -1,13 +1,11 @@
 import * as S from "./Styled";
 import ButtonDelete from "../ButtonDelete/Index";
 import PriceDiscounts from "../PriceDiscounts/Index";
-import { ICardFavorite } from "../../typesProject/types";
+import { ICard } from "../../typesProject/types";
 import { useLogin } from "../../context/LoginContext";
 
-const CardFavorite = ({ product }: ICardFavorite) => {
-  const { loggedUser, favorite, setFavorite } = useLogin();
-
-  console.log(favorite);
+const CardFavorite = ({ product }: ICard) => {
+  const { favorite, setFavorite } = useLogin();
 
   return (
     <S.ContainerCardFavorite>
@@ -35,7 +33,6 @@ const CardFavorite = ({ product }: ICardFavorite) => {
           </S.ContainerPriceFinal>
         </div>
         <ButtonDelete
-          user={loggedUser}
           product={product}
           arrState={[favorite, setFavorite]}
           nameList="favorite"

@@ -31,8 +31,7 @@ const SpecificProduct = ({ product, arrFavorite, arrCart }: ICard) => {
             </S.PriceFinal>
             <PriceDiscounts product={product} />
           </S.ContainerPriceFinal>
-          <ButtonFavorite arrParams={[product, arrFavorite, "favorites"]} />
-          <ButtonCart arrParams={[product, arrCart, "cart"]}>
+          <ButtonCart product={product} nameList="cart">
             ADICIONAR
           </ButtonCart>
         </S.ContainerContent>

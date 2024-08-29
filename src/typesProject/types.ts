@@ -4,16 +4,16 @@ import { User } from "../context/LoginContext";
 
 export type ICard = {
   product: IProduct;
-  arrFavorite: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
-  arrCart: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
+  // arrFavorite: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
+  // arrCart: [IProduct[], React.Dispatch<React.SetStateAction<IProduct[]>>];
 };
 
-export type ICardFavorite = Pick<ICard, "product">;
+// export type ICardFavorite = Pick<ICard, "product">;
 
-export type ICardCart = Pick<ICard, "product" | "arrCart">;
+// export type ICardCart = Pick<ICard, "product">;
 
 export type IButton = React.ComponentProps<"button"> & {
-  user: User | null;
+  user?: User | null;
   product: IProduct;
   arrState: [
     IProduct[] | null,
