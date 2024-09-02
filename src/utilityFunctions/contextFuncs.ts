@@ -7,7 +7,7 @@ export function isUserValid(loggedUser: ILoggedUser | null) {
     return user.id === loggedUser?.userId;
   });
 
-  return { isUserValid, registrations };
+  return { isUserValid: isUserValid, registrations: registrations };
 }
 
 export function updateListFavorite(
