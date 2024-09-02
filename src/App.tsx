@@ -21,12 +21,21 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search/:id" element={<SearchProducts />} />
-            <Route path="/c/:category/:id" element={<PrincipalCategory />} />
-            <Route path={`/:subcategory/:id`} element={<SubCategory />} />
+            <Route path="/home_center/" element={<Home />} />
             <Route
-              path={`/favorite`}
+              path="/home_center/search/:id"
+              element={<SearchProducts />}
+            />
+            <Route
+              path="/home_center/c/:category/:id"
+              element={<PrincipalCategory />}
+            />
+            <Route
+              path={`/home_center/:subcategory/:id`}
+              element={<SubCategory />}
+            />
+            <Route
+              path={`/home_center/favorite`}
               element={
                 <ProtectedRouter>
                   <Favorite />
@@ -34,16 +43,16 @@ function App() {
               }
             />
             <Route
-              path={`/cart`}
+              path={`/home_center/cart`}
               element={
                 <ProtectedRouter>
                   <Cart />
                 </ProtectedRouter>
               }
             />
-            <Route path={`/produto/:id`} element={<Product />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/login/signup" element={<SignUp />} />
+            <Route path={`/home_center/produto/:id`} element={<Product />} />
+            <Route path="/home_center/login" element={<Login />} />
+            <Route path="/home_center/login/signup" element={<SignUp />} />
           </Routes>
         </main>
         <Footer />

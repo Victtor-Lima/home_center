@@ -76,7 +76,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
       setLoggedUser(user);
       navigate("/");
     } else {
-      navigate("/login/signup");
+      navigate("/home_center/login/signup");
     }
   }
 
@@ -89,7 +89,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
       userPassword.validate()
     ) {
       createUser(userName.value, userEmail.value, userPassword.value);
-      navigate("/login");
+      navigate("/home_center/login");
     }
   }
 
