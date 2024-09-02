@@ -2,10 +2,12 @@ import * as S from "./Styled";
 import CardCart from "../../components/CardCart/Index";
 import { somar, total } from "../../utilityFunctions/quantityManipulation";
 import { useLogin } from "../../context/LoginContext";
+import NoItems from "../../components/NoItems/Index";
 
 const Cart = () => {
   const { cart } = useLogin();
 
+  if (cart?.length === 0) return <NoItems titlePage="carrinho" />;
   return (
     <S.ContainerCart>
       <S.CartTitle>Carrinho</S.CartTitle>

@@ -1,15 +1,14 @@
 import { getLocal, setLocal } from "./localstorage_funcs";
-import { IProduct } from "../typesProject/types";
-import { User, UserType } from "../context/LoginContext";
+import { ILoggedUser, IProduct, IUserData } from "../typesProject/types";
 import { updateRegistrations } from "./contextFuncs";
 
 export function addUnit(
-  user: User | null,
+  user: ILoggedUser | null,
   product: IProduct,
   state: IProduct[],
   setState: React.Dispatch<React.SetStateAction<IProduct[] | null>>
 ) {
-  const registrations: Array<UserType> = getLocal("registrations");
+  const registrations: Array<IUserData> = getLocal("registrations");
   const isUserValid = registrations.find((register) => {
     return register.id === user?.userId;
   });
@@ -30,12 +29,12 @@ export function addUnit(
 }
 
 export function removeUnit(
-  user: User | null,
+  user: ILoggedUser | null,
   product: IProduct,
   state: IProduct[],
   setState: React.Dispatch<React.SetStateAction<IProduct[] | null>>
 ) {
-  const registrations: Array<UserType> = getLocal("registrations");
+  const registrations: Array<IUserData> = getLocal("registrations");
   const isUserValid = registrations.find((register) => {
     return register.id === user?.userId;
   });
@@ -56,7 +55,7 @@ export function removeUnit(
 }
 
 export function remove(
-  user: User,
+  user: ILoggedUser,
   product: IProduct,
   arrState: [
     IProduct[],
@@ -65,7 +64,7 @@ export function remove(
   nameList: "favorite" | "cart"
 ) {
   const [state, setState] = arrState;
-  const registrations: Array<UserType> = getLocal("registrations");
+  const registrations: Array<IUserData> = getLocal("registrations");
   const isUserValid = registrations.find((register) => {
     return register.id === user.userId;
   });

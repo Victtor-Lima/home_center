@@ -1,22 +1,7 @@
 // TYPES CARD
 import React from "react";
-import { User } from "../context/LoginContext";
 
-export type ICard = {
-  product: IProduct;
-};
-
-export type IButton = React.ComponentProps<"button"> & {
-  user?: User | null;
-  product: IProduct;
-  arrState: [
-    IProduct[] | null,
-    React.Dispatch<React.SetStateAction<IProduct[] | null>>
-  ];
-  nameList: "favorite" | "cart";
-};
-
-// Types data
+// TYPES DATA
 
 export type IProduct = {
   id: string;
@@ -66,4 +51,67 @@ type available_filters_propriedades_values_object = {
 export type Obj = {
   id: string;
   name: string;
+};
+
+// TYPES COMPONENTS
+
+export type ICard = {
+  product: IProduct;
+};
+
+export type IButton = React.ComponentProps<"button"> & {
+  user?: ILoggedUser | null;
+  product: IProduct;
+  arrState: [
+    IProduct[] | null,
+    React.Dispatch<React.SetStateAction<IProduct[] | null>>
+  ];
+  nameList: "favorite" | "cart";
+};
+
+export type IButtonCart = React.ComponentProps<"button"> & {
+  product: IProduct;
+  children: React.ReactNode;
+};
+
+// TYPES CONTEXTLOGIN
+
+export type SignType = {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  onChange: ({ target }: { target: EventTarget & HTMLInputElement }) => void;
+  error: string | null;
+  validate: () => boolean;
+  onBlur: () => boolean;
+};
+
+export type LoginTypeContext = {
+  loggedUser: ILoggedUser | null;
+  userName: SignType;
+  userEmail: SignType;
+  userPassword: SignType;
+  favorite: IProduct[] | null;
+  setFavorite: React.Dispatch<React.SetStateAction<IProduct[] | null>>;
+  cart: IProduct[] | null;
+  setCart: React.Dispatch<React.SetStateAction<IProduct[] | null>>;
+  favoriteProduct: (product: IProduct) => void;
+  cartProduct: (product: IProduct) => void;
+  signIn: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  signUp: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  logout: () => void;
+};
+
+export type ILoggedUser = {
+  userName: string;
+  userEmail: string;
+  userId: number;
+};
+
+export type IUserData = {
+  name: string;
+  email: string;
+  password: string;
+  id: number;
+  favorite: IProduct[];
+  cart: IProduct[];
 };

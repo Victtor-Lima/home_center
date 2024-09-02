@@ -19,8 +19,12 @@ export const Input = styled.input`
     rgba(225, 225, 225, 1) 0%,
     rgba(222, 222, 222, 1) 100%
   );
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  padding-left: 10px;
   border-radius: 14px;
   border: none;
+  outline: none;
 `;
 
 export const SpanError = styled.span`
