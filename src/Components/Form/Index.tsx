@@ -32,7 +32,9 @@ const Form = ({ page }: PageType) => {
             <S.AccessButton onClick={(e) => signIn(e)}>Acessar</S.AccessButton>
             <p>
               Não tem uma conta?
-              <S.SignUp to="/login/signup">Cadastre-se agora!</S.SignUp>
+              <S.SignUp to="/home_center/login/signup">
+                Cadastre-se agora!
+              </S.SignUp>
             </p>
           </>
         ) : (

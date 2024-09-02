@@ -10,7 +10,7 @@ const Search = () => {
   function search(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
     if (inputValue !== null) {
-      navigate(`/search/${normalizeString(inputValue)}`);
+      navigate(`/home_center/search/${normalizeString(inputValue)}`);
     }
   }
 

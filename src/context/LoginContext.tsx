@@ -96,7 +96,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   function logout() {
     localStorage.removeItem("user");
     setLoggedUser(null);
-    navigate("/");
+    navigate("/home_center/");
   }
 
   function favoriteProduct(product: IProduct) {

@@ -12,7 +12,7 @@ const ButtonFavorite = ({ product }: ICard) => {
     if (loggedUser) {
       favoriteProduct(product);
     } else {
-      navigate("/login");
+      navigate("/home_center/login");
     }
   }
 

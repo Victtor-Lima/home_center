@@ -8,7 +8,7 @@ const ProtectedRouter = ({ children }: { children: React.ReactNode }) => {
   if (loggedUser) {
     return children;
   } else if (!loggedUser) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/home_center/login" />;
   } else {
     return <></>;
   }

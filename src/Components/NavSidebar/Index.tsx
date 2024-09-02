@@ -15,7 +15,11 @@ const NavSidebar = ({ data }: { data: SearchByCategory }) => {
             <ul>
               {filter.values.map((value) => (
                 <S.CategorieOption key={value.id}>
-                  <Link to={`/${normalizeString(value.name)}/${value.id}`}>
+                  <Link
+                    to={`/home_center/${normalizeString(value.name)}/${
+                      value.id
+                    }`}
+                  >
                     <span>{value.name}</span>
                   </Link>
                 </S.CategorieOption>

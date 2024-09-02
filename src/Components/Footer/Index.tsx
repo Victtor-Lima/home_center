@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <S.Footer>
       <S.ContainerContent>
-        <S.LinkFooter to="/">
+        <S.LinkFooter to="/home_center/">
           <S.ImgFooter src={logo} alt="Logo da Home Center" />
         </S.LinkFooter>
       </S.ContainerContent>

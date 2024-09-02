@@ -10,19 +10,19 @@ const Header = () => {
   return (
     <S.ContainerHeader>
       <S.ContainerCompenentsHeader>
-        <S.LinkPages to="/">
+        <S.LinkPages to="/home_center/">
           <S.ImgHeader src={logo} alt="Logo da Home Center" />
         </S.LinkPages>
         <Search />
-        <S.LinkPages to="/favorite">Favoritos</S.LinkPages>
-        <S.LinkPages to="/cart">Carrinho</S.LinkPages>
+        <S.LinkPages to="/home_center/favorite">Favoritos</S.LinkPages>
+        <S.LinkPages to="/home_center/cart">Carrinho</S.LinkPages>
         {loggedUser ? (
           <S.teste>
             <S.testeP>{loggedUser.userName}</S.testeP>
             <S.Logout onClick={() => logout()}>Sair</S.Logout>
           </S.teste>
         ) : (
-          <S.LinkPages to="/login">Login</S.LinkPages>
+          <S.LinkPages to="/home_center/login">Login</S.LinkPages>
         )}
         <Navbar />
       </S.ContainerCompenentsHeader>
