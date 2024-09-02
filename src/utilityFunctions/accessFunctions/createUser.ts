@@ -24,7 +24,7 @@ export function createUser(name: string, email: string, password: string) {
   const id = (Math.random() * (2000 - 1) + 1).toFixed();
   const user = { name, email, password, id, favorite: [], cart: [] };
 
-  if (!registrations) {
+  if (registrations.length === 0) {
     localStorage.setItem("registrations", JSON.stringify([user]));
   } else if (registrations) {
     localStorage.setItem(
