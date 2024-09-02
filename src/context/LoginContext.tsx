@@ -4,6 +4,12 @@ import { useValidateInput } from "../utilityFunctions/hooks/useValidateInput";
 import { useNavigate } from "react-router-dom";
 import { getLocal, setLocal } from "../utilityFunctions/localstorage_funcs";
 import { IProduct } from "../typesProject/types";
+import {
+  isUserValid,
+  updateListCart,
+  updateListFavorite,
+  updateRegistrations,
+} from "../utilityFunctions/contextFuncs";
 
 export type SignType = {
   value: string;
@@ -71,13 +77,11 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   React.useEffect(() => {
-    const local = localStorage.getItem("registrations");
-    const registrations: Array<UserType> = local ? JSON.parse(local) : false;
-    const user = registrations.find((user) => user.id === loggedUser?.userId);
+    const user = isUserValid(loggedUser);
 
-    if (user) {
-      setFavorite(user.favorite);
-      setCart(user.cart);
+    if (user.isUserValid) {
+      setFavorite(user.isUserValid.favorite);
+      setCart(user.isUserValid.cart);
     } else {
       setFavorite(null);
     }
@@ -85,24 +89,17 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
 
   function signIn(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-
-    if (userEmail.validate() && userPassword.validate()) {
-      login(userEmail.value, userPassword.value);
-    }
-  }
-
-  function login(email: string, password: string) {
     const registrations: Array<UserType> = getLocal("registrations");
-    const isUserValid = registrations
-      ? registrations.find(
-          (user) => user.email === email && user.password === password
-        )
-      : false;
+    const isUserValid = registrations.find((user) => {
+      return (
+        user.email === userEmail.value && user.password === userPassword.value
+      );
+    });
 
     if (registrations && isUserValid) {
       const user: User = {
         userName: isUserValid.name,
-        userEmail: email,
+        userEmail: userEmail.value,
         userId: isUserValid.id,
       };
 
@@ -133,59 +130,43 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   function favoriteProduct(product: IProduct) {
-    const registrations: Array<UserType> = getLocal("registrations");
-    const isUserValid = registrations.find((user) => {
-      return user.id === loggedUser?.userId;
-    });
+    const user = isUserValid(loggedUser);
 
-    const isOnTheList = isUserValid?.favorite.find((item) => {
+    const isOnTheList = user.isUserValid?.favorite.find((item) => {
       return item.id === product.id;
     });
 
-    if (isUserValid && isOnTheList) {
-      const updateFavorites = [...isUserValid.favorite];
-      updateFavorites?.splice(updateFavorites.indexOf(isOnTheList), 1);
-      isUserValid.favorite = updateFavorites;
-      setFavorite(isUserValid.favorite);
-      const newRegistrations = updateRegistrations(isUserValid, registrations);
+    if (user.isUserValid) {
+      updateListFavorite(user.isUserValid, isOnTheList, product);
+    }
+
+    if (user.isUserValid) {
+      setFavorite(user.isUserValid.favorite);
+      const newRegistrations = updateRegistrations(
+        user.isUserValid,
+        user.registrations
+      );
       setLocal("registrations", newRegistrations);
-    } else if (isUserValid && !isOnTheList) {
-      const newFavorites = [...isUserValid.favorite, product];
-      isUserValid.favorite = newFavorites;
-      setFavorite(isUserValid.favorite);
-      const newRegistrations = updateRegistrations(isUserValid, registrations);
-      localStorage.setItem("registrations", JSON.stringify(newRegistrations));
     }
   }
 
   function cartProduct(product: IProduct) {
-    console.log("teste");
-    const registrations: Array<UserType> = getLocal("registrations");
-    const isUserValid = registrations.find((user) => {
-      return user.id === loggedUser?.userId;
-    });
+    const user = isUserValid(loggedUser);
 
-    const isOnTheList = isUserValid?.cart.find((item) => {
+    const isOnTheList = user.isUserValid?.cart.find((item) => {
       return item.id === product.id;
     });
 
-    if (isUserValid && isOnTheList) {
-      const newArray = isUserValid.cart.map((el) => {
-        if (el.id === product.id) {
-          el.amount += 1;
-        }
-        return el;
-      });
-      isUserValid.cart = newArray;
-      setCart(isUserValid.cart);
-      const newRegistrations = updateRegistrations(isUserValid, registrations);
-      setLocal("registrations", newRegistrations);
-    } else if (isUserValid && !isOnTheList) {
-      product.amount = 1;
-      const updateCart = [...isUserValid.cart, product];
-      isUserValid.cart = updateCart;
-      setCart(isUserValid.cart);
-      const newRegistrations = updateRegistrations(isUserValid, registrations);
+    if (user.isUserValid) {
+      updateListCart(user.isUserValid, isOnTheList, product);
+    }
+
+    if (user.isUserValid) {
+      setCart(user.isUserValid.cart);
+      const newRegistrations = updateRegistrations(
+        user.isUserValid,
+        user.registrations
+      );
       setLocal("registrations", newRegistrations);
     }
   }
@@ -212,15 +193,3 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
     </LoginContext.Provider>
   );
 };
-
-export function updateRegistrations(
-  isUserValid: UserType,
-  registrations: UserType[]
-) {
-  return registrations.map((user) => {
-    if (user.id === isUserValid.id) {
-      user = isUserValid;
-    }
-    return user;
-  });
-}

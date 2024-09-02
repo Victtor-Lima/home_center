@@ -1,13 +1,10 @@
-import React from "react";
 import * as S from "./Styled";
 import CardCart from "../../components/CardCart/Index";
-import { IProduct } from "../../typesProject/types";
-import { getLocal } from "../../utilityFunctions/localstorage_funcs";
 import { somar, total } from "../../utilityFunctions/quantityManipulation";
 import { useLogin } from "../../context/LoginContext";
 
 const Cart = () => {
-  const { cart, setCart } = useLogin();
+  const { cart } = useLogin();
 
   return (
     <S.ContainerCart>

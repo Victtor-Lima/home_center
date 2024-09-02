@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Index";
 import Product from "./pages/Product/Index";
@@ -18,7 +18,6 @@ function App() {
   return (
     <>
       <LoginProvider>
-        {/* <BrowserRouter> */}
         <Header />
         <main>
           <Routes>
@@ -48,7 +47,6 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        {/* </BrowserRouter> */}
       </LoginProvider>
     </>
   );

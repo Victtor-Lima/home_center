@@ -1,10 +1,10 @@
 import * as S from "./Styled";
 import PriceDiscounts from "../PriceDiscounts/Index";
-import { ICardFavorite } from "../../typesProject/types";
+import { ICard } from "../../typesProject/types";
 import { normalizeString } from "../../utilityFunctions/normalizeString";
 import ButtonFavorite from "../ButtonFavorite/Index";
 
-const CardProduct = ({ product }: ICardFavorite) => {
+const CardProduct = ({ product }: ICard) => {
   return (
     <S.ContainerCardProduct key={product.id}>
       <S.LinkProduct to={`/produto/${normalizeString(product.title)}`}>
