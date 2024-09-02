@@ -34,6 +34,10 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
+    setLocal("registrations", []);
+  });
+
+  React.useEffect(() => {
     const islogged = localStorage.getItem("user");
     if (islogged) {
       const user: ILoggedUser = JSON.parse(islogged);
