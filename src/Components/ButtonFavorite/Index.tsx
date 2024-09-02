@@ -1,6 +1,6 @@
 import * as S from "./Styled";
 import { MdFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
-import { IButton, ICard, IProduct } from "../../typesProject/types";
+import { ICard, IProduct } from "../../typesProject/types";
 import { useLogin } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 

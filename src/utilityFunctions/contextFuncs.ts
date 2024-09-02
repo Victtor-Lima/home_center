@@ -1,9 +1,8 @@
-import { User, UserType } from "../context/LoginContext";
-import { IProduct } from "../typesProject/types";
+import { ILoggedUser, IProduct, IUserData } from "../typesProject/types";
 import { getLocal } from "./localstorage_funcs";
 
-export function isUserValid(loggedUser: User | null) {
-  const registrations: Array<UserType> = getLocal("registrations");
+export function isUserValid(loggedUser: ILoggedUser | null) {
+  const registrations: Array<IUserData> = getLocal("registrations");
   const isUserValid = registrations.find((user) => {
     return user.id === loggedUser?.userId;
   });
@@ -12,7 +11,7 @@ export function isUserValid(loggedUser: User | null) {
 }
 
 export function updateListFavorite(
-  user: UserType,
+  user: IUserData,
   isOnTheList: IProduct | undefined,
   product: IProduct
 ) {
@@ -27,7 +26,7 @@ export function updateListFavorite(
 }
 
 export function updateListCart(
-  user: UserType,
+  user: IUserData,
   isOnTheList: IProduct | undefined,
   product: IProduct
 ) {
@@ -47,8 +46,8 @@ export function updateListCart(
 }
 
 export function updateRegistrations(
-  isUserValid: UserType,
-  registrations: UserType[]
+  isUserValid: IUserData,
+  registrations: IUserData[]
 ) {
   return registrations.map((user) => {
     if (user.id === isUserValid.id) {

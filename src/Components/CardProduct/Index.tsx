@@ -3,6 +3,8 @@ import PriceDiscounts from "../PriceDiscounts/Index";
 import { ICard } from "../../typesProject/types";
 import { normalizeString } from "../../utilityFunctions/normalizeString";
 import ButtonFavorite from "../ButtonFavorite/Index";
+import ButtonCart from "../ButtonCart/Index";
+import { FiShoppingCart } from "react-icons/fi";
 
 const CardProduct = ({ product }: ICard) => {
   return (
@@ -29,6 +31,9 @@ const CardProduct = ({ product }: ICard) => {
         </S.ContainerPriceFinal>
       </S.LinkProduct>
       <ButtonFavorite product={product} />
+      <ButtonCart product={product}>
+        <FiShoppingCart color="#fd9d77" size="1.2em" />
+      </ButtonCart>
     </S.ContainerCardProduct>
   );
 };

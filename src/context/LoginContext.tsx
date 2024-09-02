@@ -3,53 +3,18 @@ import { createUser } from "../utilityFunctions/accessFunctions/createUser";
 import { useValidateInput } from "../utilityFunctions/hooks/useValidateInput";
 import { useNavigate } from "react-router-dom";
 import { getLocal, setLocal } from "../utilityFunctions/localstorage_funcs";
-import { IProduct } from "../typesProject/types";
+import {
+  ILoggedUser,
+  IProduct,
+  IUserData,
+  LoginTypeContext,
+} from "../typesProject/types";
 import {
   isUserValid,
   updateListCart,
   updateListFavorite,
   updateRegistrations,
 } from "../utilityFunctions/contextFuncs";
-
-export type SignType = {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-  onChange: ({ target }: { target: EventTarget & HTMLInputElement }) => void;
-  error: string | null;
-  validate: () => boolean;
-  onBlur: () => boolean;
-};
-
-type LoginTypeContext = {
-  loggedUser: User | null;
-  userName: SignType;
-  userEmail: SignType;
-  userPassword: SignType;
-  favorite: IProduct[] | null;
-  setFavorite: React.Dispatch<React.SetStateAction<IProduct[] | null>>;
-  cart: IProduct[] | null;
-  setCart: React.Dispatch<React.SetStateAction<IProduct[] | null>>;
-  favoriteProduct: (product: IProduct) => void;
-  cartProduct: (product: IProduct) => void;
-  signIn: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  signUp: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  logout: () => void;
-};
-
-export type User = {
-  userName: string;
-  userEmail: string;
-  userId: number;
-};
-
-export type UserType = {
-  name: string;
-  email: string;
-  password: string;
-  id: number;
-  favorite: IProduct[];
-  cart: IProduct[];
-};
 
 export const LoginContext = React.createContext<LoginTypeContext | null>(null);
 
@@ -60,7 +25,7 @@ export const useLogin = () => {
 };
 
 export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
-  const [loggedUser, setLoggedUser] = React.useState<User | null>(null);
+  const [loggedUser, setLoggedUser] = React.useState<ILoggedUser | null>(null);
   const userName = useValidateInput("username");
   const userEmail = useValidateInput("email");
   const userPassword = useValidateInput("password");
@@ -71,7 +36,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   React.useEffect(() => {
     const islogged = localStorage.getItem("user");
     if (islogged) {
-      const user: User = JSON.parse(islogged);
+      const user: ILoggedUser = JSON.parse(islogged);
       setLoggedUser(user);
     }
   }, []);
@@ -89,7 +54,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
 
   function signIn(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
-    const registrations: Array<UserType> = getLocal("registrations");
+    const registrations: Array<IUserData> = getLocal("registrations");
     const isUserValid = registrations.find((user) => {
       return (
         user.email === userEmail.value && user.password === userPassword.value
@@ -97,7 +62,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
     });
 
     if (registrations && isUserValid) {
-      const user: User = {
+      const user: ILoggedUser = {
         userName: isUserValid.name,
         userEmail: userEmail.value,
         userId: isUserValid.id,
@@ -105,6 +70,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
 
       localStorage.setItem("user", JSON.stringify(user));
       setLoggedUser(user);
+      navigate("/");
     } else {
       navigate("/login/signup");
     }

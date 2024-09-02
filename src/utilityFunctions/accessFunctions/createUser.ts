@@ -1,5 +1,4 @@
-import { UserType } from "../../context/LoginContext";
-import { IProduct } from "../../typesProject/types";
+import { IProduct, IUserData } from "../../typesProject/types";
 
 type createUser = {
   name: string;
@@ -12,7 +11,7 @@ type createUser = {
 
 export function createUser(name: string, email: string, password: string) {
   const local = localStorage.getItem("registrations");
-  const registrations: Array<UserType> = local ? JSON.parse(local) : false;
+  const registrations: Array<IUserData> = local ? JSON.parse(local) : false;
   const isUserValid = registrations
     ? registrations.find((user) => user.email === email)
     : false;
