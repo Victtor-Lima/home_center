@@ -2,12 +2,11 @@ import React from "react";
 import * as S from "./Styled";
 import CardProduct from "../../components/CardProduct/Index";
 import { fetchData } from "../../utilityFunctions/fetchData";
-import { IProduct, SearchByCategory } from "../../typesProject/types";
+import { SearchByCategory } from "../../typesProject/types";
 import { useParams } from "react-router-dom";
 
 const SearchProducts = () => {
   const [data, setData] = React.useState<SearchByCategory | null>(null);
-  const [favorite, setFavorite] = React.useState<IProduct[]>([]);
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -29,10 +28,7 @@ const SearchProducts = () => {
       <S.SearchProductsList>
         {data.results.map((product) => (
           <li key={product.id}>
-            <CardProduct
-              product={product}
-              arrFavorite={[favorite, setFavorite]}
-            />
+            <CardProduct product={product} />
           </li>
         ))}
       </S.SearchProductsList>

@@ -1,10 +1,10 @@
 import * as S from "./Styled";
 import { MdFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
-import { IButton, IProduct } from "../../typesProject/types";
+import { IButton, ICard, IProduct } from "../../typesProject/types";
 import { useLogin } from "../../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 
-const ButtonFavorite = ({ product }: IButton) => {
+const ButtonFavorite = ({ product }: ICard) => {
   const { loggedUser, favorite, favoriteProduct } = useLogin();
   const navigate = useNavigate();
 

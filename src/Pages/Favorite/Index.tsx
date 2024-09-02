@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./Styled";
 import CardFavorite from "../../components/CardFavorite/Index";
 import { useLogin } from "../../context/LoginContext";

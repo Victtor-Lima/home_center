@@ -1,6 +1,7 @@
 import { getLocal, setLocal } from "./localstorage_funcs";
 import { IProduct } from "../typesProject/types";
-import { updateRegistrations, User, UserType } from "../context/LoginContext";
+import { User, UserType } from "../context/LoginContext";
+import { updateRegistrations } from "./contextFuncs";
 
 export function addUnit(
   user: User | null,
