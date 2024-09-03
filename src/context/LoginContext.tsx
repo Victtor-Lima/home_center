@@ -34,10 +34,6 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    setLocal("registrations", []);
-  });
-
-  React.useEffect(() => {
     const islogged = localStorage.getItem("user");
     if (islogged) {
       const user: ILoggedUser = JSON.parse(islogged);
@@ -59,7 +55,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
   function signIn(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
     const registrations: Array<IUserData> = getLocal("registrations");
-    const isUserValid = registrations.find((user) => {
+    const isUserValid = registrations?.find((user) => {
       return (
         user.email === userEmail.value && user.password === userPassword.value
       );
@@ -74,7 +70,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
 
       localStorage.setItem("user", JSON.stringify(user));
       setLoggedUser(user);
-      navigate("/");
+      navigate("/home_center/");
     } else {
       navigate("/home_center/login/signup");
     }

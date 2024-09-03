@@ -1,4 +1,5 @@
 import { IProduct, IUserData } from "../../typesProject/types";
+import { getLocal } from "../localstorage_funcs";
 
 type createUser = {
   name: string;
@@ -10,11 +11,8 @@ type createUser = {
 };
 
 export function createUser(name: string, email: string, password: string) {
-  const local = localStorage.getItem("registrations");
-  const registrations: Array<IUserData> = local ? JSON.parse(local) : false;
-  const isUserValid = registrations
-    ? registrations.find((user) => user.email === email)
-    : false;
+  const registrations: Array<IUserData> = getLocal("registrations");
+  const isUserValid = registrations?.find((user) => user.email === email);
 
   if (isUserValid) {
     alert("Você já possui uma conta com esse e-mail");
@@ -24,7 +22,7 @@ export function createUser(name: string, email: string, password: string) {
   const id = (Math.random() * (2000 - 1) + 1).toFixed();
   const user = { name, email, password, id, favorite: [], cart: [] };
 
-  if (registrations.length === 0) {
+  if (!registrations) {
     localStorage.setItem("registrations", JSON.stringify([user]));
   } else if (registrations) {
     localStorage.setItem(

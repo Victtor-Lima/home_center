@@ -3,7 +3,7 @@ import { getLocal } from "./localstorage_funcs";
 
 export function isUserValid(loggedUser: ILoggedUser | null) {
   const registrations: Array<IUserData> = getLocal("registrations");
-  const isUserValid = registrations.find((user) => {
+  const isUserValid = registrations?.find((user) => {
     return user.id === loggedUser?.userId;
   });
 
